@@ -26,7 +26,9 @@ _and compare against published sha1sum or md5sum on downloads section._
 
  * *write it on a 2GB (or bigger) compact flash*
 
-`zcat debian-alix-cf2g.img.gz | dd of=/dev/sdX bs=16k`
+`zcat debian-alix-cf2g.img.gz | dd of=/dev/sd*X* bs=16k`
+
+_/dev/sd*X* maybe /dev/sda, /dev/sdb, /dev/sdc ... according your environment_
 
 
 = first boot pre-configured settings =
