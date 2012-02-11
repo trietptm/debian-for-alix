@@ -14,7 +14,7 @@ http://code.google.com/p/debian-for-alix/downloads/list
 
 `cat debian-alix-cf2g.img.gz-split-* > debian-alix-cf2g.img.gz`
 
- * *verify the checksum of debian-alix-cf2g.img.gz*
+ * *verify the checksum of debian-alix-cf2g.img.gz* _this step is not required, recommended to avoid broken files._
 
 `sha1sum debian-alix-cf2g.img.gz`  
 
