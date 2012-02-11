@@ -28,7 +28,7 @@ _and compare against published sha1sum or md5sum on downloads section._
 
 `zcat debian-alix-cf2g.img.gz | dd of=/dev/sd*X* bs=16k`
 
-_/dev/sd*X* maybe /dev/sda, /dev/sdb, /dev/sdc ... according your environment_
+_/dev/sdX maybe /dev/sda, /dev/sdb, /dev/sdc ... according your environment_
 
 
 = first boot pre-configured settings =
