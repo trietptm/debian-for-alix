@@ -1,3 +1,4 @@
+<pre>
 It's a Debian 6.0.4 image ready to use on ALIX board, just download and write on 2G (or bigger) compact flash.
 
 Below, some features/services:
@@ -28,3 +29,4 @@ Below, some features/services:
 - It's Debian Squeeze i386, so any available software for that platform can be installed, regards hardware power limitations of ALIX boards.
 
 Enjoy!
+</pre>
