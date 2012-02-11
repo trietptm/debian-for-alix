@@ -12,19 +12,19 @@ What you want to get your system runnning
 
  * *concatenate them to a single image file *
 
-[cat debian-alix-cf2g.img.gz-split-* > debian-alix-cf2g.img.gz]
+cat debian-alix-cf2g.img.gz-split-* > debian-alix-cf2g.img.gz
 
  * *verify the checksum of debian-alix-cf2g.img.gz*
 
-[ sha1sum debian-alix-cf2g.img.gz ] or 
+sha1sum debian-alix-cf2g.img.gz  or 
 
-[ md5sum debian-alix-cf2g.img.gz ] and
+md5sum debian-alix-cf2g.img.gz  and
 
-[ compare against published sha1sum or md5sum ]
+compare against published sha1sum or md5sum 
 
  * *write it on a 2GB (or bigger) compact flash*
 
-[ zcat debian-alix-cf2g.img.gz | dd of=/dev/sdX bs=16k ]
+zcat debian-alix-cf2g.img.gz | dd of=/dev/sdX bs=16k 
 
 
 = first boot pre-configured settings =
@@ -55,7 +55,7 @@ I'll show you to ways to persist you changes:
  
 * use chroot environment write direct over /ro partition *
 
-[ recommended to install/update/remove applications and complex changes involving many files ]
+_recommended to install/update/remove applications and complex changes involving many files_
 
  * run *remountrw* to enable write on /ro
  * run *rebind on* to mount system partitions under chrooted environment
@@ -65,9 +65,9 @@ I'll show you to ways to persist you changes:
  * run *rebind off* to umount system partitions under chrooted environment
  * run *remountro* to disable write on /ro
 
-[ when your changes restart some service while you are inside chroot environment, you'll probably need run *lsof /ro* to find process that are locking resources and kill them before successfully use "rebind off" and "remountro". If commands before don't help you, at last option reboot system, so is strogly recommeded run "fsck -a /dev/sda1" after system boots ]
+_when your changes restart some service while you are inside chroot environment, you'll probably need run *lsof /ro* to find process that are locking resources and kill them before successfully use "rebind off" and "remountro". 
 
-
+If commands before don't help you, at last option reboot system, so is strogly recommeded run "fsck -a /dev/sda1" after system boots_
 
 
 
