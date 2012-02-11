@@ -6,22 +6,37 @@ Below, some features/services:
 - read only file system, it protects against power failures and substantially increases compact flash life time.
 
 - common services available on first boot:
+
 -- serial terminal [ 38400n8 ]
+
 -- dnsmasq [ dns and dhcp servers ]
+
 -- iptables [ basic firewall rules and internet sharing ]
+
 -- samba [ MS Win file share ]
+
 -- cups [ print server ]
+
 -- vsftpd [ ftp server ]
+
 -- nginx with fastcgi [ http server ]
+
 -- minidlna [ media server ]
+
 -- openssh [ terminal and sftp ]
+
 -- stunnel [ ssl engine, https support preconfigured for nginx and transmission ]
+
 -- pptpd [ vpn server, MS Win has native support since XP ]
+
 -- openconnect [ vpn client, cisco compactible ]
+
 -- external storage automount and sharing
 
 - additional services, available just turned on:
+
 -- transmission [ torrent p2p ]
+
 -- hostapd [ wireless access point / it needs a miniPCI card or usb dongle ]
 
 - Regular system maintenance through apt-get, use it to update, install and remove applications and patches.
