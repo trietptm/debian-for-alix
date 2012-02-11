@@ -67,9 +67,7 @@ _recommended to install/update/remove applications and complex changes involving
 
 _when your changes restart some service while you are inside chroot environment, you'll probably need run *lsof /ro* to find process that are locking resources and kill them before successfully use "rebind off" and "remountro". 
 
-If commands before don't help you, at last option reboot system, so is strogly recommeded run "fsck -a /dev/sda1" after system boots_
-
-
+If commands before don't help you, at last option reboot system, so is strongly recommeded run "fsck -a /dev/sda1" after system boots_
 
 
 
