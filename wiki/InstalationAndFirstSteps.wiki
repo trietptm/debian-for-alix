@@ -55,8 +55,7 @@ zcat debian-alix-cf2g.img.gz | dd of=/dev/sdb bs=16k
 
 = first boot pre-configured settings =
 
-*ALIX2D13*
-
+*ALIX2D13* and *ALIX2D3* (3 RJ45 connectors)
 
 http://debian-for-alix.googlecode.com/files/ALIX2D13_LAN_SETTINGS.jpg
 
