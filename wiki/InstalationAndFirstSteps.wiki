@@ -56,6 +56,7 @@ zcat debian-alix-cf2g.img.gz | dd of=/dev/sdb bs=16k
 = first boot pre-configured settings =
 
 *ALIX2D13* and *ALIX2D3* (3 RJ45 connectors)
+
 *ALIX2D2* also works well without changes, obviously *eth2* won't load, but LAN configuration was made over *br0*
 
 http://debian-for-alix.googlecode.com/files/ALIX2D13_LAN_SETTINGS.jpg
