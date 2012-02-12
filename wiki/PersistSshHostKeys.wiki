@@ -1,0 +1,37 @@
+# Save ssh host keys to persistent partition
+
+= Introduction =
+
+For security reasons, I've removed ssh host keys from persistent partition and I made a slight change in ssh service script to generate new keys if they don't exists.
+
+= Details =
+
+Until you do this, every boot new keys will be generated and stored under volatile partiontion (/rw)
+
+{{{
+remountrw
+mv /rw/etc/ssh/ssh_host_* /ro/etc/ssh/
+remountro
+}}}
+
+{{{
+...
+create_host_keys() {
+    if [ ! -e /etc/ssh/ssh_host_dsa_key ]; then
+        /usr/bin/ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key -N ''
+    fi
+    if [ ! -e /etc/ssh/ssh_host_rsa_key ]; then
+        /usr/bin/ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+    fi
+}
+...
+...
+...
+  start)
+        check_privsep_dir
+        check_for_no_start
+        check_dev_null
+        create_host_keys
+        log_daemon_msg "Starting OpenBSD Secure Shell server" "sshd"
+...
+}}}
