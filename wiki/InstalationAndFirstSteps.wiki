@@ -52,7 +52,7 @@ http://debian-for-alix.googlecode.com/files/ALIX2D13_LAN_SETTINGS.jpg
 
 The "/" partition is the union of "/ro" (persistent) and "/rw" (volatile), then by default all of your changes over "/" will be saved on "/rw", keeping "/ro" unchanged, so changes will be lost every boot. 
 
-I'll show you three ways to persist you changes:
+I'll show you two ways to persist you changes:
 
 * 1: move changed files from volatile to persistent partition*
  * do changes normally over / structure (edit files, run commands, restart services, do tests)
