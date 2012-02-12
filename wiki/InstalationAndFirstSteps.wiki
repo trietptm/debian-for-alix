@@ -2,7 +2,7 @@
 
 = Introduction =
 
-All of you want to get your system runnning
+All you need to get your system runnning, in a couple commands.
 
 
 = writing image on CF =
