@@ -7,8 +7,7 @@ All of you want to get your system runnning
 
 = writing image on CF =
 
- * *download the image splitted files* 
-http://code.google.com/p/debian-for-alix/downloads/list
+ * *download the image splitted files* from http://code.google.com/p/debian-for-alix/downloads/list
 
  * *concatenate them to a single image file *
 
@@ -59,6 +58,17 @@ I'll show you two ways to persist you changes:
  * run *remountrw* to enable write on /ro
  * *move* changed files *from* /rw *to* /ro
  * run *remountro* to disable write on /ro
+
+example
+
+{{{
+nano /etc/default/transmission-daemon
+nano /var/lib/transmission/settings.json.template
+remountrw
+mv /rw/etc/default/transmission-daemon /ro/etc/default/
+mv /rw/var/lib/transmission/settings.json.template /ro/var/lib/transmission/
+remountro
+}}}
  
 * 2: use chroot environment write direct over /ro partition *
 
@@ -71,6 +81,20 @@ _recommended to install/update/remove applications and complex changes involving
  * run *exit* to get out chrooted environment and back to the true "/" environment
  * run *rebind off* to umount system partitions under chrooted environment
  * run *remountro* to disable write on /ro
+
+example
+{{{
+remountrw
+rebind on
+chroot /ro
+apt-get update
+apt-get -y upgrade
+apt-get clean
+history -c
+exit
+rebind off
+remountro
+}}}
 
 _when your changes restart some service while you are inside chroot environment, you'll probably need run *lsof /ro* to find process that are locking resources and kill them before successfully use *rebind off* and *remountro*_
 
