@@ -107,7 +107,7 @@ iface wlan0 inet manual
 _Do not forget to persist the changes, otherwise will be lost on next boot_
 
 {{{ 
-#alter file using you preferred editor
+#alter file using your preferred text editor
 nano /etc/network/interfaces
 remountrw
 mv /rw/etc/hostapd/hostapd.conf /ro/etc/hostapd/
