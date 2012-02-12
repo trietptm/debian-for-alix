@@ -23,7 +23,10 @@ wpa_group_rekey=600
 ctrl_interface=/var/run/hostapd
 }}}
 
-=  =
+_Change parameters *ssid*, and *wpa_key_mgmt* according your  preference_
+
+_*hw_mode* and *channel* perhaps need changes, see your hardware specs_
+
 = 3 RJ45 connectors =
 == ALIX2D13 and ALIX2D3 ==
  * 1 WAN
@@ -110,7 +113,7 @@ mv /rw/etc/network/interfaces /ro/etc/network/
 remountro
 }}}
 
-_Enable hostapd to start on boot_
+_Enable service *hostapd* to start on *boot*_
 
 {{{ 
 remountrw
