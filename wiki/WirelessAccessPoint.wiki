@@ -109,6 +109,7 @@ _Do not forget to persist the changes, otherwise will be lost on next boot_
 {{{ 
 #alter file using your preferred text editor
 nano /etc/network/interfaces
+nano /etc/hostapd/hostapd.conf
 remountrw
 mv /rw/etc/hostapd/hostapd.conf /ro/etc/hostapd/
 mv /rw/etc/network/interfaces /ro/etc/network/
