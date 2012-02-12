@@ -1,7 +1,7 @@
 # configuration suggestions for files */etc/hostapd/hostdapd.conf* */etc/network/interfaces* when using a *wireless adapter* as a *access point*.
 
 = hostapd configuration for boards with 3, 2 and 1 RJ45 connector=
-_It was tested with an Atheros miniPCI (ath5k) and a Ralink USB dongle (rt73usb), both provide 802.11g and WPA2 over 2.4Ghz_
+_It was tested with an Atheros miniPCI (ath5k) and a Ralink USB dongle (rt73usb), both provided 802.11g and WPA2 over 2.4Ghz_
 
 {{{
 #/etc/hostapd/hostapd.conf
