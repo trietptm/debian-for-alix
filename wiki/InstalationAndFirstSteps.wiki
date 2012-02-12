@@ -33,11 +33,14 @@ _/dev/sdX maybe /dev/sda, /dev/sdb, /dev/sdc ... according your environment_
 
 = first boot pre-configured settings =
 
-*used on alix3d13 - 3 RJ45 ports*
+*ALIX2D13*
+
+
+http://debian-for-alix.googlecode.com/files/ALIX2D13_LAN_SETTINGS.jpg
 
  * serial port: 38400n8
- * WAN IP: dhcp (RJ45 beside power plug)
- * LAN IP: *172.16.210.254*/255.255.255.0 (other two RJ45 in bridge mode)
+ * WAN IP: dhcp ( *eth0* )
+ * LAN IP: *172.16.210.254*/255.255.255.0 ( *br0* => *eth1* and *eth2* )
  * hostname: alix.site
  * ssh server: 22 (default port)
  * *root* password: *123456*
@@ -49,10 +52,10 @@ _/dev/sdX maybe /dev/sda, /dev/sdb, /dev/sdc ... according your environment_
 
 The "/" partition is the union of "/ro" (persistent) and "/rw" (volatile), then by default all of your changes over "/" will be saved on "/rw", keeping "/ro" unchanged, so changes will be lost every boot. 
 
-I'll show you two ways to persist you changes:
+I'll show you three ways to persist you changes:
 
 * 1: move changed files from volatile to persistent partition*
- * do changes normally (edit files, run commands, restart services, do tests)
+ * do changes normally over / structure (edit files, run commands, restart services, do tests)
  * run *remountrw* to enable write on /ro
  * *move* changed files *from* /rw *to* /ro
  * run *remountro* to disable write on /ro
