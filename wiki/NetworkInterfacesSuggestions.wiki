@@ -1,4 +1,4 @@
-# network configuration - suggestions
+# configuration suggestions for file */etc/network/interfaces* 
 
 = 3 RJ45 connectors =
 == ALIX2D13 and ALIX2D3 ==
@@ -66,3 +66,12 @@ iface br0 inet static
 iface eth0 inet manual
 }}}
 
+Do not forget to persist the changes, otherwise will be lost on next boot
+
+{{{ 
+#alter file using you preferred editor
+nano /etc/network/interfaces
+remountrw
+mv /rw/etc/network/interfaces /ro/etc/network/
+remountro
+}}}
