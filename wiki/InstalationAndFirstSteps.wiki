@@ -45,7 +45,7 @@ wget -S http://debian-for-alix.googlecode.com/files/sha1sum
 
 cat debian-alix-cf2g.img.gz-split-* > debian-alix-cf2g.img.gz
 
-egrep debian-alix-cf2g.img.gz sha1sum
+egrep debian-alix-cf2g.img.gz$ sha1sum
 
 sha1sum debian-alix-cf2g.img.gz
 
