@@ -29,6 +29,26 @@ _and compare against published sha1sum or md5sum on downloads section._
 
 _/dev/sdX maybe /dev/sda, /dev/sdb, /dev/sdc ... according your environment_
 
+example
+{{{
+
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-00
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-01
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-02
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-03
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-04
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-05
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-06
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-07
+wget -S http://debian-for-alix.googlecode.com/files/debian-alix-cf2g.img.gz-split-08
+
+cat debian-alix-cf2g.img.gz-split-* > debian-alix-cf2g.img.gz
+
+sha1sum debian-alix-cf2g.img.gz
+
+zcat debian-alix-cf2g.img.gz | dd of=/dev/sdb bs=16k
+
+}}}
 
 = first boot pre-configured settings =
 
