@@ -1,4 +1,4 @@
-# configuration suggestions for files */etc/hostapd/hostdapd.conf* and */etc/network/interfaces*, when using a *wireless adapter* as a *access point*.
+# configuration suggestions for files */etc/hostapd/hostdapd.conf* and */etc/network/interfaces*, when using a *wireless adapter* as an *access point*.
 
 _ dnsmasq (dns and dhcp server) serves LAN e WLAN through bridge interface br0 _
 
