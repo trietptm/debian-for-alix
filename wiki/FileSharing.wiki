@@ -18,16 +18,15 @@ remountro
 
 _You can also enable authenticated ftp access, see sample below_
 {{{
-remountrw
-rebind on
-chroot /ro
-
 echo local_enable=YES >> /etc/vsftpd.conf
 echo chroot_local_user=YES >> /etc/vsftpd.conf
+remountrw
+mv /ro/etc/vsftpd.conf /rw/etc/
+rebind on
+chroot /ro
 useradd -d /mnt -s /bin/false alixftp
 passwd alixftp
 history -c
-
 exit
 rebind off
 remoutro
