@@ -1,0 +1,33 @@
+=Transmission=
+
+To enable the well-known torrent software, *transmission*, just plug a external disk with a single partition NTFS, EXT2/EXT3 or FAT32`*` labeled P2P-HD.
+When the *P2P-HD* is plugged for first time the structure below will be created:
+{{{
+transmission/
+transmission/config
+transmission/config/blocklists
+transmission/config/resume
+transmission/config/torrents
+transmission/downloads
+transmission/watch
+}}}
+
+Transmission Web Interface will turned available under  http://alix.site:9091 and https://alix.site:9092
+
+Transmission service will automatically *started* and *stopped* when *P2P-HD* will *plugged* and *unplugged*. You also use http://alix.site or https://alix.site to manually start/stop service.
+
+`*` FAT32 isn't recommended, because its max file size is limited to 4GB.
+
+== Changing HD label and/or folder for torrent use  ==
+
+Edit */etc/default/transmission-daemon* and do alter parameter *BASE_DIR*
+
+{{{
+# /etc/default/transmission-daemon
+ENABLE_DAEMON=1
+BASE_DIR="/mnt/P2P-HD/transmission"
+CONFIG_DIR="$BASE_DIR/config"
+DOWNLOAD_DIR="$BASE_DIR/downloads"
+WATCH_DIR="$BASE_DIR/watch"
+OPTIONS="--config-dir $CONFIG_DIR --download-dir $DOWNLOAD_DIR --watch-dir $WATCH_DIR --no-incomplete-dir"
+}}}
