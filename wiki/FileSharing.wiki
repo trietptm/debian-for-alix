@@ -16,4 +16,19 @@ mv /rw/etc/vsftpd.conf /ro/etc/
 remountro
 }}}
 
-_In other way, you can create a regular linux user and use it to authenticate across ftp service. By default it can navigate on entire system_
+_You can also enable authenticated ftp access, see sample below_
+{{{
+remountrw
+rebind on
+chroot /ro
+
+echo local_enable=YES >> /etc/vsftpd.conf
+echo chroot_local_user=YES >> /etc/vsftpd.conf
+useradd -d /mnt -s /bin/false alixftp
+passwd alixftp
+history -c
+
+exit
+rebind off
+remoutro
+}}}
