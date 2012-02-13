@@ -94,7 +94,7 @@ mv /rw/var/lib/transmission/settings.json.template /ro/var/lib/transmission/
 remountro
 }}}
  
-* 2: use chroot environment write direct over /ro partition *
+* 2: use chroot environment to write direct over /ro partition *
 
 _recommended to install/update/remove applications and complex changes involving many files_
 
