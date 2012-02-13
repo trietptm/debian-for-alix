@@ -18,6 +18,16 @@ Transmission service will automatically *started* and *stopped* when *P2P-HD* wi
 
 `*` FAT32 isn't recommended, because its max file size is limited to 4GB.
 
+== Protect Web Interface Access ==
+
+Change parameters on file */mnt/P2P-HD/transmission/config/settings.json* as below:
+{{{
+    "rpc-authentication-required": true,
+    "rpc-password": "YOU-PASSWORD-HERE",
+    "rpc-username": "admin",
+}}}
+_You can access that file from Win PC through *Samba* sharing *\\alix\mnt\P2P-HD\transmission\config\settings.json*_
+
 == Changing HD label and/or folder for torrent use  ==
 
 Edit */etc/default/transmission-daemon* and do alter parameter *BASE_DIR*
