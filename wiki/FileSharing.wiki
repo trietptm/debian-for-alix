@@ -8,24 +8,11 @@ When you plug an external hard disk, it'll be mounted under */mnt/* using its *l
  * Secure FTP (also known sFTP), its run over SSH, you can use root login to access entire system. FileZilla is very good sftp client.
 
 vsFTPd provides anonymous ftp access, but its was pointed to /srv/ftp, and there are no files.
-If you wish to serve your files by ftp, just add parameter *anon_root=/mnt* on the end of file */etc/vsftpd.conf*, see below:
+If you wish to serve your files by ftp, just change homedir from user ftp, see below:
 {{{
-echo anon_root=/mnt >> /etc/vsftpd.conf
-remountrw
-mv /rw/etc/vsftpd.conf /ro/etc/
-remountro
-}}}
-
-_You can also enable authenticated ftp access, see sample below_
-{{{
-echo local_enable=YES >> /etc/vsftpd.conf
-echo chroot_local_user=YES >> /etc/vsftpd.conf
-remountrw
-mv /ro/etc/vsftpd.conf /rw/etc/
 rebind on
 chroot /ro
-useradd -d /mnt -s /bin/false alixftp
-passwd alixftp
+usermod -d /mnt ftp
 history -c
 exit
 rebind off
