@@ -1,6 +1,6 @@
 = File Sharing =
 
-When you plug an external hard disk, it'll be mounted unter */mnt/* using its *label*, for partition without label will mounted as *hdusb-sdX*
+When you plug an external hard disk, it'll be mounted under */mnt/* using its *label*, for partition without label will mounted as *hdusb-sdX*
 
 */mnt* and all of its content is ready to be accessed by services below:
  * Web browser (read only) http://alix.site/mnt/ or https://alix.site/mnt/
