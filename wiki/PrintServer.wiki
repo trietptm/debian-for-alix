@@ -1,0 +1,18 @@
+#Share your USB Printer through the CUPS.
+
+= Setup your printer using CUPS Web Admin =
+
+ * Plug printer device in a USB port
+ * Open http://alix.site:631 
+ * Go to Administration section (root login will requested), click in Add Printer and follow steps
+ * After configuration was successfully made, move configuration from volatile to persistent partition.
+
+{{{
+remountrw
+mv /rw/etc/cups/* /ro/etc/cups/
+remountro
+}}}
+
+_Won't need linux drivers on that page, you can use RAW, because printer client uses its own driver to gerenate data that will sent do printer through CUPS, in this case, CUPS acts as gateway, passing data from network to device_
+
+_Other network printers can be shared through CUPS, it provides advantage to put all queues in a central point_
