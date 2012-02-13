@@ -7,7 +7,7 @@ When you plug an external hard disk, it'll be mounted under */mnt/* using its *l
  * Win share (read write) \\alix\mnt\
  * Secure FTP (also known sFTP), its run over SSH, you can use root login to access entire system. FileZilla is very good sftp client.
 
-FTP service provides anonymous access, so its point to /srv/ftp, and there are no files.
+vsFTPd provides anonymous ftp access, but its was pointed to /srv/ftp, and there are no files.
 If you wish to serve your files by ftp, just add parameter *anon_root=/mnt* on the end of file */etc/vsftpd.conf*, see below:
 {{{
 echo anon_root=/mnt >> /etc/vsftpd.conf
