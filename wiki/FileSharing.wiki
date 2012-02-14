@@ -5,38 +5,19 @@ When you plug an external hard disk, it'll be mounted under */mnt/* using its *l
 */mnt* and all of its content is ready to be accessed by services below:
  * Web browser (read only) http://alix.site/mnt/ or https://alix.site/mnt/
  * Win share (read write) \\alix\mnt\
- * Secure FTP (also known sFTP), its run over SSH, you can use root login to access entire system. FileZilla is very good sftp client.
+ * FTP client (read only) ftp://alix.site
+ * Secure FTP (also known sFTP) sftp://alix.site _Its run over SSH, you can use root login to access entire system. FileZilla is very good sftp client._
 
-vsFTPd provides anonymous ftp access, but its was pointed to /srv/ftp, and there are no files.
-If you wish to serve your files by ftp, just change homedir from user ftp, see below:
+FTP server was also configured to accept authenticated access, just create the users on Linux OS. 
+example:
 {{{
 remountrw
 rebind on
 chroot /ro
-
-usermod -d /mnt ftp
-
-history -c
-exit
-rebind off
-remoutro
-}}}
-
-You can enable authenticate ftp service too by editing */etc/vsftpd.conf* and uncommenting *local_enable=YES* and *chroot_local_user=YES*
-
-{{{
-remountrw
-rebind on
-chroot /ro
-
-# use your preferred text editot
-nano /etc/vsftpd.conf
-
 useradd -d /mnt -s /bin/false alixftp
 passwd alixftp
-
 history -c
 exit
 rebind off
-remoutro
+remountro
 }}}
