@@ -14,8 +14,8 @@ All you need to get your system runnning, in a couple commands.
 example
 {{{
 # download debian-alix-cf2g.img.gz from http://debian-for-alix.4shared.com
-# SHA1SUM 0331cf4c1b673c437fe06783c4cdf8a042be6d81  debian-alix-cf2g.img.gz
-# MD5SUM  98c2c9f12669f7fa8d27008285d25d30          debian-alix-cf2g.img.gz
+# SHA1SUM 0331cf4c1b673c437fe06783c4cdf8a042be6d81
+# MD5SUM  98c2c9f12669f7fa8d27008285d25d30
 
 cat debian-alix-cf2g.img.gz.sha1sum 
 sha1sum debian-alix-cf2g.img.gz
