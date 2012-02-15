@@ -8,33 +8,22 @@ All you need to get your system runnning, in a couple commands.
 = writing image on CF =
 
  * *download the image file *from http://debian-for-alix.4shared.com
-
- * *verify the checksum of debian-alix-cf2g.img.gz* _this step is not required, but recommended to avoid broken files._
-
-`sha1sum debian-alix-cf2g.img.gz` _or_ `md5sum debian-alix-cf2g.img.gz`  
-
-_and compare against published sha1sum or md5sum on downloads section._
-
- * *write it on a 2GB (or bigger) compact flash*
-
-`zcat debian-alix-cf2g.img.gz | dd of=/dev/sdX bs=16k`
-
-_/dev/sdX maybe /dev/sda, /dev/sdb, /dev/sdc ... according your environment_
+ * *verify the checksum of debian-alix-cf2g.img.gz* _this step is not required, but recommended to avoid broken files._  
+ * *write image on a 2GB (or bigger) compact flash*
 
 example
 {{{
 # download debian-alix-cf2g.img.gz from http://debian-for-alix.4shared.com
-# downlaod debian-alix-cf2g.img.gz.sha1sum from http://code.google.com/p/debian-for-alix/downloads/list
-
+# SHA1SUM 0331cf4c1b673c437fe06783c4cdf8a042be6d81  debian-alix-cf2g.img.gz
+# MD5SUM  98c2c9f12669f7fa8d27008285d25d30          debian-alix-cf2g.img.gz
 
 cat debian-alix-cf2g.img.gz.sha1sum 
-
 sha1sum debian-alix-cf2g.img.gz
-
 zcat debian-alix-cf2g.img.gz | dd of=/dev/sdb bs=16k
 }}}
+_The device path perhaps can be other like /dev/sdc, /dev/sdd ... according your environment_
 
-= first boot pre-configured settings =
+= first boot, pre-configured settings =
 
 *ALIX2D13* and *ALIX2D3* (3 RJ45 connectors)
 
