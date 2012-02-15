@@ -1,0 +1,27 @@
+# VPN Server
+
+
+*PPTP VPN Server* was chose because MS Win has a built in client since XP, other OS like Mac OS, iOS, Android and Linux also have support.
+
+That service is enabled by default, to use it you just need to add users on */etc/ppp/chap-secrets*
+
+After client connects, It'll receive a IP in local network range, so it'll able to access any other hosts in your local network as It was there.
+
+example:
+{{{
+# use your preferred text editor
+nano /etc/ppp/chap-secrets
+remountrw 
+mv /rw/etc/ppp/chap-secrets /ro/etc/ppp/
+remountro
+}}}
+
+/etc/ppp/chap-secrets example
+{{{
+# Secrets for authentication using CHAP
+# client        server  secret                  IP addresses
+john            pptpd   johnPWD                 *
+mary            pptpd   maryPWD                 *
+lucy            pptpd   lucyPWD                 *
+peter           pptpd   peterPWD                *
+}}}
