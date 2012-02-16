@@ -17,7 +17,6 @@ example
 # SHA1SUM 0331cf4c1b673c437fe06783c4cdf8a042be6d81
 # MD5SUM  98c2c9f12669f7fa8d27008285d25d30
 
-cat debian-alix-cf2g.img.gz.sha1sum 
 sha1sum debian-alix-cf2g.img.gz
 zcat debian-alix-cf2g.img.gz | dd of=/dev/sdb bs=16k
 }}}
