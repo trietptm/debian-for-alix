@@ -2,7 +2,7 @@
 
 = Setup your printer using CUPS Web Admin =
 
- * Plug printer device in a USB port
+ * Plug printer device in an USB port
  * Open http://alix.site:631 
  * Go to Administration section (root login will requested), click in Add Printer and follow steps
  * After configuration was successfully made, move configuration from volatile to persistent partition.
