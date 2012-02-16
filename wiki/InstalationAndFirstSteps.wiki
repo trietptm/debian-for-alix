@@ -37,7 +37,8 @@ http://debian-for-alix.googlecode.com/files/ALIX2D13_LAN_SETTINGS.jpg
  * ssh server: 22 (default port)
  * *root* password: *123456*
  * char set: en_US.UTF8
- * LAN dhcp server: 172.16.210.121 - 172.16.210.200
+ * LAN dhcp range: 172.16.210.121 - 172.16.210.200
+ * VPN pptp range: 172.16.210.201 - 172.16.210.220
  * WLAN: disable by default, because many people doesn't have one
 
 = save your changes =
