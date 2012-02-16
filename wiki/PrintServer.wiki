@@ -13,6 +13,6 @@ mv /rw/etc/cups/* /ro/etc/cups/
 remountro
 }}}
 
-_You won't need linux drivers on that page, you can use *raw driver*, because printer client uses its own driver to gerenate data that will be sent to printer through CUPS, in this case, CUPS acts as gateway, passing data from network to device_
+_You won't need linux drivers on that page, you can use *raw driver*, because printer client uses its own driver to gerenate data that will be sent to printer through CUPS, in this case, CUPS acts as gateway, forwarding data from network client to USB device_
 
 _Other network printers can be shared through CUPS, it provides advantage to put all queues in a central point_
