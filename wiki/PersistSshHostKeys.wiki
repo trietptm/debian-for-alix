@@ -2,7 +2,7 @@
 
 = Introduction =
 
-For security reasons, I've removed ssh host keys from persistent partition and I made a slight change in ssh service script to generate new keys if they don't exists.
+For security reasons, I've removed *ssh host keys* from persistent partition and I made a slight change in ssh service script to generate new ones if they don't exists.
 
 = Details =
 
