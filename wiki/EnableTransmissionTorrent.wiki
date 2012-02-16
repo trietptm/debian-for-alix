@@ -1,6 +1,6 @@
 =Transmission=
 
-To enable the well-known torrent software, *transmission*, just plug a external disk with a single partition NTFS, EXT2/EXT3 or FAT32`*` labeled P2P-HD.
+To enable the well-known torrent software, *transmission*, just plug an external disk with a single partition NTFS, EXT2/EXT3 or FAT32`*` labeled P2P-HD.
 When the *P2P-HD* is plugged for first time the structure below will be created:
 {{{
 transmission/
