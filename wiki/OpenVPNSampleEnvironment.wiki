@@ -1,8 +1,10 @@
-I did a quickly test using routed subnets 
+I did a quickly test using *routed* subnets on both side
 
-  * routed -> each side use a distinct IP range
-  * bridged -> both side use the same IP range
+  * routed -> each side use a distinct IP range and knows route to partner
+  * bridged -> both side use the same IP range 
 
+
+http://debian-for-alix.googlecode.com/files/OpenVPN-Sample.png
 
 == OpenVPN Server ==
   * public host -> alixfordebian2012.dnsalias.com
