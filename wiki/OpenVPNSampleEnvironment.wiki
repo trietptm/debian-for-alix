@@ -1,22 +1,23 @@
+
 I did a quickly test using routed subnets 
 
 routed -> each side use a distinct IP range
 bridged -> both side use the same IP range
 
 
-OpenVPN Server  
-public host -> alixfordebian2012.dnsalias.com
-VPN range   -> 10.80.65.0  / 255.255.255.0
-LAN range   -> 172.16.10.0 / 255.255.255.0
+== OpenVPN Server ==
+* public host -> alixfordebian2012.dnsalias.com
+* VPN range   -> 10.80.65.0  / 255.255.255.0
+* LAN range   -> 172.16.10.0 / 255.255.255.0
 
-OpenVPN Client  (client1)
-LAN range   -> 192.168.100.0 / 255.255.255.0
+== OpenVPN Client  (client1) ==
+* LAN range   -> 192.168.100.0 / 255.255.255.0
 
 
 Certificates and keys was created on server using easy-rsa, this tool is provided by OpenVPN under /usr/share/doc/openvpn/examples/easy-rsa/2.0/, generated files was stored in sub directory ./keys.
 See http://openvpn.net/index.php/open-source/documentation/howto.html#pki
 
-
+{{{
 ***** SERVER SIDE FILES ******
 /etc/openvpn/server.conf
 /etc/openvpn/ccd/client1
@@ -78,5 +79,6 @@ key keys/client1.key
 ns-cert-type server
 comp-lzo
 verb 3
+}}}
 
 The needed routes was automatically created at service start(/etc/init.d/openvpn), both network hosts turned available to it other.  (of course, ip forward needs to be turned on)
