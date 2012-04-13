@@ -1,17 +1,16 @@
-
 I did a quickly test using routed subnets 
 
-routed -> each side use a distinct IP range
-bridged -> both side use the same IP range
+  * routed -> each side use a distinct IP range
+  * bridged -> both side use the same IP range
 
 
 == OpenVPN Server ==
-* public host -> alixfordebian2012.dnsalias.com
-* VPN range   -> 10.80.65.0  / 255.255.255.0
-* LAN range   -> 172.16.10.0 / 255.255.255.0
+  * public host -> alixfordebian2012.dnsalias.com
+  * VPN range   -> 10.80.65.0  / 255.255.255.0
+  * LAN range   -> 172.16.10.0 / 255.255.255.0
 
 == OpenVPN Client  (client1) ==
-* LAN range   -> 192.168.100.0 / 255.255.255.0
+  * LAN range   -> 192.168.100.0 / 255.255.255.0
 
 
 Certificates and keys was created on server using easy-rsa, this tool is provided by OpenVPN under /usr/share/doc/openvpn/examples/easy-rsa/2.0/, generated files was stored in sub directory ./keys.
