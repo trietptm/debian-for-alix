@@ -21,24 +21,28 @@ See http://openvpn.net/index.php/open-source/documentation/howto.html#pki
 {{{
 cd /usr/share/doc/openvpn/examples/easy-rsa/2.0/
 
+# use nano or your preferred text editor
 nano vars
 
 # adjust these vars according your locality (or preference)
+`
 export KEY_COUNTRY="BR"
 export KEY_PROVINCE="SP"
 export KEY_CITY="Sao Paulo"
 export KEY_ORG="Debian For ALIX"
 export KEY_EMAIL="nomail@nodomain"
-
+`
 
 . ./vars
-
+`
 NOTE: If you run ./clean-all, I will be doing a rm -rf on /usr/share/doc/openvpn/examples/easy-rsa/2.0/key
+`
 
 ./clean-all
 
 ./build-ca
 
+`
 Country Name (2 letter code) [BR]:
 State or Province Name (full name) [SP]:
 Locality Name (eg, city) [Sao Paulo]:
@@ -47,10 +51,10 @@ Organizational Unit Name (eg, section) []:
 Common Name (eg, your name or your server's hostname) [Debian For ALIX CA]:
 Name []:
 Email Address [nomail@nodomain]:
-
+`
 
 ./build-key-server server
-
+`
 Country Name (2 letter code) [BR]:
 State or Province Name (full name) [SP]:
 Locality Name (eg, city) [Sao Paulo]:
@@ -66,13 +70,11 @@ An optional company name []:
 Sign the certificate? [y/n]: y
 
 1 out of 1 certificate requests certified, commit? [y/n] y
-
-
-
+`
 
 # Do that for each new client, below it'll generated certificate to client named remotesite1
 ./build-key remotesite1
-
+`
 Country Name (2 letter code) [BR]:
 State or Province Name (full name) [SP]:
 Locality Name (eg, city) [Sao Paulo]:
@@ -88,6 +90,7 @@ An optional company name []:
 Sign the certificate? [y/n]:y
 
 1 out of 1 certificate requests certified, commit? [y/n] y
+`
 
 ./build-dh
 
@@ -98,7 +101,7 @@ cd ./keys
 
 
 {{{
-***** BOTH SIDE FILES ******
+***** BOTH SIDE FILES   ******
 /etc/openvpn/keys/ca.crt
 
 ***** SERVER SIDE FILES ******
@@ -112,8 +115,9 @@ cd ./keys
 /etc/openvpn/client.conf
 /etc/openvpn/keys/remotesite1.crt
 /etc/openvpn/keys/remotesite1.key
+}}}
 
-
+{{{
 **** server.conf CONTENT *****
 port 1194
 proto udp
