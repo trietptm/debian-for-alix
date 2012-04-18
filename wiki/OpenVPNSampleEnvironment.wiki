@@ -19,20 +19,99 @@ Certificates and keys was created on server using easy-rsa, this tool is provide
 See http://openvpn.net/index.php/open-source/documentation/howto.html#pki
 
 {{{
+cd /usr/share/doc/openvpn/examples/easy-rsa/2.0/
+
+nano vars
+
+# adjust these vars according your locality (or preference)
+export KEY_COUNTRY="BR"
+export KEY_PROVINCE="SP"
+export KEY_CITY="Sao Paulo"
+export KEY_ORG="Debian For ALIX"
+export KEY_EMAIL="nomail@nodomain"
+
+
+. ./vars
+
+NOTE: If you run ./clean-all, I will be doing a rm -rf on /usr/share/doc/openvpn/examples/easy-rsa/2.0/key
+
+./clean-all
+
+./build-ca
+
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For ALIX]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [Debian For ALIX CA]:
+Name []:
+Email Address [nomail@nodomain]:
+
+
+./build-key-server server
+
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For ALIX]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [server]:
+Name []:
+Email Address [nomail@nodomain]:
+
+A challenge password []:
+An optional company name []:
+
+Sign the certificate? [y/n]: y
+
+1 out of 1 certificate requests certified, commit? [y/n] y
+
+
+
+
+# Do that for each new client, below it'll generated certificate to client named remotesite1
+./build-key remotesite1
+
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For ALIX]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [remotesite1]:
+Name []:
+Email Address [nomail@nodomain]:
+
+A challenge password []:
+An optional company name []:
+
+Sign the certificate? [y/n]:y
+
+1 out of 1 certificate requests certified, commit? [y/n] y
+
+./build-dh
+
+cd ./keys
+
+#copy keys according described below
+}}}
+
+
+{{{
+***** BOTH SIDE FILES ******
+/etc/openvpn/keys/ca.crt
+
 ***** SERVER SIDE FILES ******
 /etc/openvpn/server.conf
-/etc/openvpn/ccd/client1
+/etc/openvpn/ccd/remotesite1
 /etc/openvpn/keys/dh1024.pem
 /etc/openvpn/keys/server.key
 /etc/openvpn/keys/server.crt
-/etc/openvpn/keys/ca.crt
-
 
 ***** CLIENT SIDE FILES ******
 /etc/openvpn/client.conf
-/etc/openvpn/keys/ca.crt
-/etc/openvpn/keys/client1.crt
-/etc/openvpn/keys/client1.key
+/etc/openvpn/keys/remotesite1.crt
+/etc/openvpn/keys/remotesite1.key
 
 
 **** server.conf CONTENT *****
@@ -59,7 +138,7 @@ status /var/log/openvpn-status.log
 verb 3
 
 
-**** client1 CONTENT     ******
+**** remotesite1 CONTENT  ******
 iroute 192.168.100.0 255.255.255.0
 
 
@@ -75,8 +154,8 @@ group nogroup
 persist-key
 persist-tun
 ca keys/ca.crt
-cert keys/client1.crt
-key keys/client1.key
+cert keys/remotesite1.crt
+key keys/remotesite1.key
 ns-cert-type server
 comp-lzo
 verb 3
