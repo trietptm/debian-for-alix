@@ -166,5 +166,8 @@ verb 3
 }}}
 
 The needed routes was automatically created at service start(/etc/init.d/openvpn), both network hosts turned available to it other.  
-of course, ip forward needs to be turned on
-`sysctl -w net.ipv4.ip_forward=1`
+
+{{{
+# of course, ip forward needs to be turned on
+sysctl -w net.ipv4.ip_forward=1
+}}}
