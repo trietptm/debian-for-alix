@@ -1,0 +1,187 @@
+I did a quickly test using *routed* subnets on both side
+
+  * routed -> each side use a distinct IP range and knows route to partner
+  * bridged -> both side use the same IP range 
+
+
+http://debian-for-alix.googlecode.com/files/OpenVPN-routed-sample.png
+
+== OpenVPN Server --- Office 1 ==
+  * public host -> debianforalix2012.dnsalias.com
+  * LAN range   -> 172.16.10.0 / 255.255.255.0
+
+== OpenVPN Client --- Client 1 ==
+
+
+Certificates and keys was created on server using easy-rsa, this tool is provided by OpenVPN under /usr/share/doc/openvpn/examples/easy-rsa/2.0/, generated files was stored in sub directory ./keys.
+See http://openvpn.net/index.php/open-source/documentation/howto.html#pki
+
+{{{
+cd /usr/share/doc/openvpn/examples/easy-rsa/2.0/
+
+# use nano or your preferred text editor
+nano vars
+
+# adjust these vars according your locality (or preference)
+`
+export KEY_COUNTRY="BR"
+export KEY_PROVINCE="SP"
+export KEY_CITY="Sao Paulo"
+export KEY_ORG="Debian For ALIX"
+export KEY_EMAIL="nomail@nodomain"
+`
+
+. ./vars
+`
+NOTE: If you run ./clean-all, I will be doing a rm -rf on /usr/share/doc/openvpn/examples/easy-rsa/2.0/key
+`
+
+./clean-all
+
+./build-ca
+
+`
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For ALIX]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [Debian For ALIX CA]:
+Name []:
+Email Address [nomail@nodomain]:
+`
+
+./build-key-server server
+`
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For ALIX]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [server]:
+Name []:
+Email Address [nomail@nodomain]:
+
+A challenge password []:
+An optional company name []:
+
+Sign the certificate? [y/n]: y
+
+1 out of 1 certificate requests certified, commit? [y/n] y
+`
+
+# Do that for each new client, below it'll generated certificate to client named remotesite1
+./build-key remoteclient1
+`
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For ALIX]:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) [remoteclient1]:
+Name []:
+Email Address [nomail@nodomain]:
+
+A challenge password []:
+An optional company name []:
+
+Sign the certificate? [y/n]:y
+
+1 out of 1 certificate requests certified, commit? [y/n] y
+`
+
+./build-dh
+
+cd ./keys
+
+#copy keys according described below
+}}}
+
+
+{{{
+***** BOTH SIDE FILES   ******
+/etc/openvpn/keys/ca.crt
+
+***** SERVER SIDE FILES ******
+/etc/openvpn/server.conf
+/etc/openvpn/keys/dh1024.pem
+/etc/openvpn/keys/server.key
+/etc/openvpn/keys/server.crt
+
+***** CLIENT SIDE FILES ******
+C:\Program Files (x86)\OpenVPN\config\client.conf
+C:\Program Files (x86)\OpenVPN\config\keys\remoteclient1.crt
+C:\Program Files (x86)\OpenVPN\config\keys\remoteclient1.key
+}}}
+
+{{{
+## /etc/network/interfaces
+## don´t change other interfaces, just LAN
+
+#iface eth1 inet static
+#    address 172.16.10.1
+#    netmask 255.255.255.0
+
+iface eth1 inet manual
+
+iface tap0 inet manual
+        pre-up /usr/sbin/openvpn --dev tap0 --mktun
+
+auto tap0 br0
+iface br0 inet static
+    address 172.16.10.1
+    netmask 255.255.255.0
+    bridge_ports eth1 tap0
+    bridge_stp off
+    bridge_maxwait 1
+}}}
+
+{{{
+**** server.conf CONTENT *****
+port 1194
+proto udp
+dev tap0
+ca keys/ca.crt
+cert keys/server.crt
+key keys/server.key
+dh keys/dh1024.pem
+server-bridge 172.16.10.1 255.255.255.0 172.16.10.20 172.16.10.40
+ifconfig-pool-persist /var/spool/ipp.txt
+push "dhcp-option DNS 172.16.10.1"
+client-config-dir ccd
+client-to-client
+keepalive 10 120
+comp-lzo
+user nobody
+group nogroup
+persist-key
+persist-tun
+status /var/log/openvpn-status.log
+verb 3
+
+
+**** client.conf CONTENT (Windows 7)******
+client
+dev tap
+proto udp
+remote debianforalix2012.dnsalias.com 1124
+resolv-retry infinite
+nobind
+;user nobody
+;group nogroup
+persist-key
+persist-tun
+ca "C:/Program Files (x86)/OpenVPN/keys/ca.crt"
+cert "C:/Program Files (x86)/OpenVPN/config/keys/remoteclient1.crt"
+key "C:/Program Files (x86)/OpenVPN/config/keys/remoteclient1.key"
+ns-cert-type server
+comp-lzo
+verb 3
+}}}
+
+The needed routes was automatically created at service start(/etc/init.d/openvpn), both network hosts turned available to it other.  
+
+{{{
+# of course, ip forward needs to be turned on
+sysctl -w net.ipv4.ip_forward=1
+}}}
