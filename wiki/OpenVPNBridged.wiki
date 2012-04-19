@@ -190,6 +190,6 @@ The needed routes was automatically created at service start(/etc/init.d/openvpn
 sysctl -w net.ipv4.ip_forward=1
 }}}
 
-W
-Windows Client ( http://openvpn.net/index.php/download/community-downloads.html )
-http://swupdate.openvpn.org/community/releases/openvpn-2.2.2-install.exe
+Windows Client 
+ *http://openvpn.net/index.php/download/community-downloads.html
+ *http://swupdate.openvpn.org/community/releases/openvpn-2.2.2-install.exe
