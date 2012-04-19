@@ -4,7 +4,7 @@ I did a quickly test using *routed* subnets on both side
   * bridged -> both side use the same IP range 
 
 
-http://debian-for-alix.googlecode.com/files/OpenVPN-routed-sample.png
+http://debian-for-alix.googlecode.com/files/OpenVPN-bridged-sample.png
 
 == OpenVPN Server --- Office 1 ==
   * public host -> debianforalix2012.dnsalias.com
