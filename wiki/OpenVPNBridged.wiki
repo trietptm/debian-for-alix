@@ -99,23 +99,22 @@ cd ./keys
 
 
 {{{
-***** BOTH SIDE FILES   ******
-/etc/openvpn/keys/ca.crt
-
 ***** SERVER SIDE FILES ******
 /etc/openvpn/server.conf
+/etc/openvpn/keys/ca.crt
 /etc/openvpn/keys/dh1024.pem
 /etc/openvpn/keys/server.key
 /etc/openvpn/keys/server.crt
 
 ***** CLIENT SIDE FILES ******
 C:\Program Files (x86)\OpenVPN\config\client.conf
+C:\Program Files (x86)\OpenVPN\config\keys\ca.crt
 C:\Program Files (x86)\OpenVPN\config\keys\remoteclient1.crt
 C:\Program Files (x86)\OpenVPN\config\keys\remoteclient1.key
 }}}
 
 {{{
-## /etc/network/interfaces
+## /etc/network/interfaces in OpenVPN Server host
 ## don´t change other interfaces, just LAN
 
 #iface eth1 inet static
