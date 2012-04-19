@@ -1,4 +1,4 @@
-I did a quickly test using *routed* subnets on both side
+I did a quickly test using *bridged* subnet with remote clients
 
   * routed -> each side use a distinct IP range and knows route to partner
   * bridged -> both side use the same IP range 
