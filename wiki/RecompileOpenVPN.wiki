@@ -26,7 +26,7 @@ rebind off
 remountro
 }}}
 
-If openvpn is installed, remove it before to avoid mistakes.
+ * If openvpn is installed, remove it before to avoid mistakes.
 {{{
 apt-get remove openvpn-blacklist openvpn
 }}}
