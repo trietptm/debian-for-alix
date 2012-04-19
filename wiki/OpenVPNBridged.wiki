@@ -170,7 +170,7 @@ nobind
 ;group nogroup
 persist-key
 persist-tun
-ca "C:/Program Files (x86)/OpenVPN/keys/ca.crt"
+ca "C:/Program Files (x86)/OpenVPN/config/keys/ca.crt"
 cert "C:/Program Files (x86)/OpenVPN/config/keys/remoteclient1.crt"
 key "C:/Program Files (x86)/OpenVPN/config/keys/remoteclient1.key"
 ns-cert-type server
