@@ -113,26 +113,31 @@ C:\Program Files (x86)\OpenVPN\config\keys\remoteclient1.crt
 C:\Program Files (x86)\OpenVPN\config\keys\remoteclient1.key
 }}}
 
+Changed /etc/network/interfaces, created tap0 and added to brige br0
 {{{
-## /etc/network/interfaces in OpenVPN Server host
-## don´t change other interfaces, just LAN
+# The loopback network interface
+auto lo
+iface lo inet loopback
 
-#iface eth1 inet static
-#    address 172.16.10.1
-#    netmask 255.255.255.0
-
-iface eth1 inet manual
-
-iface tap0 inet manual
-        pre-up /usr/sbin/openvpn --dev tap0 --mktun
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet dhcp
+    up /sbin/iptables-restore /etc/iptables.rules
 
 auto tap0 br0
 iface br0 inet static
     address 172.16.10.1
     netmask 255.255.255.0
-    bridge_ports eth1 tap0
+    bridge_ports eth1 eth2 tap0
     bridge_stp off
     bridge_maxwait 1
+
+iface eth1 inet manual
+
+iface eth2 inet manual
+
+iface tap0 inet manual
+        pre-up /usr/sbin/openvpn --dev tap0 --mktun
 }}}
 
 {{{
