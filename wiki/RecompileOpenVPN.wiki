@@ -31,7 +31,7 @@ remountro
 apt-get remove openvpn-blacklist openvpn
 }}}
 
- * With you need a trivial setup, just install openvpn default package, provided by debian team 
+ * If you need a trivial (bridged or routed) setup, just install openvpn default package, provided by debian team 
 {{{
 remountro
 rebind on
