@@ -10,9 +10,9 @@ iface lo inet loopback
 
 allow-hotplug eth0
 iface eth0 inet dhcp
-    up /sbin/iptables-restore /etc/iptables.rules
+    pre-up /etc/firewall/alix.fw start
 
-auto br0
+auto tap0 br0
 iface br0 inet static
     address 172.16.210.254
     netmask 255.255.255.0
@@ -23,6 +23,9 @@ iface br0 inet static
 iface eth1 inet manual
 
 iface eth2 inet manual
+
+iface tap0 inet manual
+    pre-up /usr/sbin/openvpn --dev tap0 --mktun
 }}}
 
 = 2 RJ45 connectors =
@@ -35,9 +38,9 @@ iface lo inet loopback
 
 allow-hotplug eth0
 iface eth0 inet dhcp
-    up /sbin/iptables-restore /etc/iptables.rules
+    pre-up /etc/firewall/alix.fw start
 
-auto br0
+auto tap0 br0
 iface br0 inet static
     address 172.16.210.254
     netmask 255.255.255.0
@@ -46,6 +49,9 @@ iface br0 inet static
     bridge_maxwait 1
 
 iface eth1 inet manual
+
+iface tap0 inet manual
+    pre-up /usr/sbin/openvpn --dev tap0 --mktun
 }}}
 
 = 1 RJ45 connector =
@@ -55,7 +61,7 @@ iface eth1 inet manual
 auto lo
 iface lo inet loopback
 
-auto br0
+auto tap0 br0
 iface br0 inet static
     address 172.16.210.254
     netmask 255.255.255.0
@@ -64,6 +70,9 @@ iface br0 inet static
     bridge_maxwait 1
 
 iface eth0 inet manual
+
+iface tap0 inet manual
+    pre-up /usr/sbin/openvpn --dev tap0 --mktun
 }}}
 
 Do not forget to persist the changes, otherwise will be lost on next boot
@@ -75,3 +84,5 @@ remountrw
 mv /rw/etc/network/interfaces /ro/etc/network/
 remountro
 }}}
+
+_If you won't plan to use openvpn udp-bridge, you can remove or comment tap0 interface references_ 
