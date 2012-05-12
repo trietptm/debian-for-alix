@@ -8,7 +8,7 @@ All you need to get your system runnning, in a couple commands.
 = writing image on CF =
 
  * *download the image file *from http://debian-for-alix.4shared.com
- * *verify the checksum of debian-alix-cf2g.img.gz* _this step is not required, but recommended to avoid broken files._  
+ * *verify the checksum of debian-alix-cf2g.img.bz2* _this step is not required, but recommended to avoid broken files._  
  * *write image on a 2GB (or bigger) compact flash*
 
 example
