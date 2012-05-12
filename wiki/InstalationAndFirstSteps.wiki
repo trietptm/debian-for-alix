@@ -13,12 +13,12 @@ All you need to get your system runnning, in a couple commands.
 
 example
 {{{
-# download debian-alix-cf2g.img.gz from http://debian-for-alix.4shared.com
-# SHA1SUM 0331cf4c1b673c437fe06783c4cdf8a042be6d81
-# MD5SUM  98c2c9f12669f7fa8d27008285d25d30
+# download debian-alix-cf2g.img.bz2 from http://debian-for-alix.4shared.com
+# SHA1SUM 3e24d74298ed249f4cd8082806aaf4e02b447bfb
+# MD5SUM  1c6460d632ec5c28be26398e07d71da5
 
-sha1sum debian-alix-cf2g.img.gz
-zcat debian-alix-cf2g.img.gz | dd of=/dev/sdb bs=16k
+sha1sum debian-alix-cf2g.img.bz2
+bzcat debian-alix-cf2g.img.bz2 | dd of=/dev/sdb bs=16k
 }}}
 _The device path perhaps can be other like /dev/sdc, /dev/sdd ... according your environment_
 
@@ -82,7 +82,7 @@ remountrw
 rebind on
 chroot /ro
 apt-get update
-apt-get -y upgrade
+apt-get -y dist-upgrade
 apt-get clean
 history -c
 exit
