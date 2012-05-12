@@ -1,15 +1,18 @@
-# Save ssh host keys to persistent partition
+# Change default ssh host keys
 
 = Introduction =
 
-For security reasons, I've removed *ssh host keys* from persistent partition and I made a slight change in ssh service script to generate new ones if they don't exists.
+For security reasons, is highly recommeded that you replace the default *ssh host keys*.
 
 = Details =
 
-Until you do this, every boot new keys will be generated and stored under volatile partiontion (/rw)
+Anyone that download this image will know the ssh host keys content, doing this you'll create your unique ones
 
 {{{
 remountrw
+rm /ro/etc/ssh/ssh_host_*
+dpkg-reconfigure openssh-server
 mv /rw/etc/ssh/ssh_host_* /ro/etc/ssh/
 remountro
+/etc/init.d/ssh restart
 }}}
