@@ -6,7 +6,7 @@ When you plug an external hard disk, it'll be mounted under */mnt/* using its *l
  * Web browser (read only) http://alix.site/
  * Win share (read write) \\alix\mnt\
  * FTP client (read write) ftp://alix.site:2121 (see comments below)
- * Secure FTP (ready write) sftp://alix.site _Its run over SSH, you can use root login to access entire system. FileZilla is very good sftp client._
+ * Secure FTP (ready write) sftp://alix.site _Its run over SSH, you can use root login to access entire system. _FileZilla_ is very good sftp client._
  * Media Server (read only) use any UPnP/DLNA compatible client.
 
 FTP server it's configured to accept authenticated access only, and  the access is restricted to user home directory, then you can create many users you need, each one seeing what you want.
