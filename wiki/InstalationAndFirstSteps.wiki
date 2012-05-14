@@ -88,3 +88,7 @@ remountro
 _when your changes restart some service while you are inside chroot environment, you'll probably need run *lsof /ro* to find process that are locking resources and kill them before successfully use *rebind off* and *remountro*_
 
 _If commands before don't help you, at last option run *mount -o remount,ro -f /ro* and reboot system, so is strongly recommeded run *fsck -p /dev/sda1* after system boots_
+
+
+
+See wiki http://code.google.com/p/debian-for-alix/w/list
