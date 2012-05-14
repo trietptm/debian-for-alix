@@ -40,18 +40,17 @@ http://debian-for-alix.googlecode.com/files/ALIX2D13_LAN_SETTINGS.jpg
 
 = save your changes =
 
-The "/" partition is the union of "/ro" (persistent) and "/rw" (volatile), then by default all of your changes over "/" will be saved on "/rw", keeping "/ro" unchanged, so changes will be lost every boot. 
+The */* partition is an union of */ro* (persistent / CF Card) and */rw* (volatile / RAM), then by default all of your changes over */* will stored on */rw*, keeping */ro* untouched, so changes will be lost each boot. 
 
 I'll show you two ways to persist you changes:
 
 * 1: move changed files from volatile to persistent partition*
- * do changes normally over / structure (edit files, run commands, restart services, do tests)
- * run *remountrw* to enable write on /ro
+ * do changes normally over */* structure (edit files, run commands, restart services, do tests)
+ * run *remountrw* to turn */ro* writable
  * *move* changed files *from* /rw *to* /ro
- * run *remountro* to disable write on /ro
+ * run *remountro* to turn */ro* read only again
 
 example
-
 {{{
 nano /etc/default/transmission-daemon
 nano /var/lib/transmission/settings.json.template
@@ -65,13 +64,13 @@ remountro
 
 _recommended to install/update/remove applications and complex changes involving many files_
 
- * run *remountrw* to enable write on /ro
- * run *rebind on* to mount system partitions under chrooted environment
- * run *chroot /ro* to enter in chroot environment, "/ro" will be shown as "/"
- * do your changes, they'll be saved direct on persistent partition
- * run *exit* to get out chrooted environment and back to the true "/" environment
- * run *rebind off* to umount system partitions under chrooted environment
- * run *remountro* to disable write on /ro
+ * run *remountrw* to turn */ro* writable
+ * run *rebind on* to bind system partitions under */ro*
+ * run *chroot /ro* to turn "/ro" your root environment 
+ * do your changes, they'll be saved direct on CF Card
+ * run *history -c ; exit* to erase command history and get out chrooted environment, backing to the true */* environment
+ * run *rebind off* to disassemble system partitions under */ro* 
+ * run *remountro* to turn */ro* read only again
 
 example
 {{{
@@ -88,4 +87,4 @@ remountro
 
 _when your changes restart some service while you are inside chroot environment, you'll probably need run *lsof /ro* to find process that are locking resources and kill them before successfully use *rebind off* and *remountro*_
 
-_If commands before don't help you, at last option reboot system, so is strongly recommeded run *fsck -a /dev/sda1* after system boots_
+_If commands before don't help you, at last option run *mount -o remount,ro -f /ro* and reboot system, so is strongly recommeded run *fsck -p /dev/sda1* after system boots_
