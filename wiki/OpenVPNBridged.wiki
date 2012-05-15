@@ -14,7 +14,12 @@ mv udp-bridge.conf.OFF udp-bridge.conf
 remountro
 /etc/init.d/openvpn restart
 }}}
+add the line on firewall rules at /ro/etc/firewall/alix.fw
+{{{
+/sbin/iptables -A INPUT -p udp --dport 1194 -m state --state NEW -j ACCEPT
+}}}
 
+_bridged and routed can be used simultaneously, just change the port (1194) on one of them_
 === creating client certificates ===
 {{{
 remountrw
