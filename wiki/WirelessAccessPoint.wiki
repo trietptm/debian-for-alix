@@ -113,15 +113,13 @@ iface tap0 inet manual
 iface wlan0 inet manual
 }}}
 
-_Do not forget to persist the changes, otherwise will be lost on next boot_
-
 {{{ 
-#alter file using your preferred text editor
-nano /etc/network/interfaces
-nano /etc/hostapd/hostapd.conf
+# use your preferred text editor, I've used nano
 remountrw
-mv /rw/etc/hostapd/hostapd.conf /ro/etc/hostapd/
-mv /rw/etc/network/interfaces /ro/etc/network/
+
+nano /ro/etc/network/interfaces
+nano /ro/etc/hostapd/hostapd.conf
+
 remountro
 }}}
 
@@ -130,9 +128,11 @@ _Enable service *hostapd* to start on *boot*_
 {{{ 
 remountrw
 rebind on
+
 chroot /ro
 sysv-rc-conf hostapd on
 history -c ; exit
+
 rebind off
 remountro
 }}}
