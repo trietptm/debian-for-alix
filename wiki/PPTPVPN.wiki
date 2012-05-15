@@ -1,4 +1,4 @@
-# VPN Server
+# Client to Site VPN
 
 
 *PPTP VPN Server* was chose because MS Win has a built in client since XP, other OS like Mac OS, iOS, Android and Linux also have native support.
