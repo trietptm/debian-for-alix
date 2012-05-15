@@ -7,6 +7,8 @@ That service is enabled by default, to use it you just need to add users on */et
 
 After client connects, It'll receive an IP in 172.16.210.201 - 172.16.210.220 range, so it'll able to access any other hosts in your local network as It was there.
 
+http://debian-for-alix.googlecode.com/files/openvpn-bridge.png
+
 I've used nano, but you can use your preferred text editor
 {{{
 remountrw
