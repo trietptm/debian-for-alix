@@ -34,6 +34,7 @@ cd /ro/etc/ssl/easy-rsa/
 ./revoke-full crltest.site
 ./build-key-server alix.site
 ./build-dh
+chmod 0755 keys
 
 remountro
 
