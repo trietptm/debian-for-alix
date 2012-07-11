@@ -21,7 +21,7 @@ remountro
 
 == Authority, Server and Clients SSL Certificates ==
 
-As ssh hosts keys, the SSL certificates and keys are the same for anyone that get this prepared image, so to avoid broken communication and fake vpn clients (but with signed and valid certificates), you need to clear then old CA and create your new own.
+As ssh hosts keys, the SSL certificates and keys are the same for anyone that get this prepared image, so to avoid broken communication and fake vpn clients (but with signed and valid certificates), you need to clear the current CA and create your new own.
 
 {{{
 remountrw
