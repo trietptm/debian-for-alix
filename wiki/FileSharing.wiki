@@ -9,7 +9,7 @@ When you plug an external hard disk, it'll be mounted under */mnt/* using its *l
  * Secure FTP (ready write) sftp://alix.site . Its run over SSH, you can use root login to access entire system. FileZilla is very good sftp client._
  * Media Server (read only) use any UPnP/DLNA compatible client.
 
-FTP server it's configured to accept authenticated access only, and  the access is restricted to user home directory, then you can create many users you need, each one seeing what you want.
+FTP server it's configured to accept authenticated access only, and  the access is restricted to their home directory, then you can create many users you need, each one seeing what you want.
 
 _Security tip: creating users with *-s /bin/false*, they won´t be able to access the system through SSH terminal or sftp_
  
