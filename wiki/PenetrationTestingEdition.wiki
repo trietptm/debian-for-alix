@@ -9,7 +9,7 @@ You will need to have Debian for Alix installed on a Compact Flash card or conve
 
 Once the Alix boots, whether on the Alix or in VirtualBox, run the following commands.
 
-*Remove Software* 
+==Remove Software== 
 {{{
 #apt-get update
 #apt-get remove cups samba vsftpd minidlna tinyproxy pptpd snmpd openvpn openconnect nginx
@@ -19,7 +19,7 @@ Once the Alix boots, whether on the Alix or in VirtualBox, run the following com
 }}}
 We remove dnsmasq from start since we will be using it in penetration testing.
 
-*Install Software*
+==Install Software==
 {{{
 #apt-get install subversion (Note:  build-essential, git, already installed)
 #apt-get install zip unzip
@@ -29,7 +29,7 @@ We remove dnsmasq from start since we will be using it in penetration testing.
 #cd ~/source
 }}}
 
-*Aircrack-NG*
+===Aircrack-NG===
 {{{
 root@alix:~/source# svn co http://trac.aircrack-ng.org/svn/trunk/ aircrack-ng
 root@alix:~/source# cd aircrack-ng
@@ -38,7 +38,7 @@ root@alix:~/source/aircrack-ng# make install
 root@alix:~/source/aircrack-ng# airodump-ng-oui-update
 }}}
 
-*Kismet*
+===Kismet===
 {{{
 #apt-get install libpcap0.8-dev libncurses5-dev libnl-dev libpcre3-dev
 #cd ~/source
@@ -51,7 +51,7 @@ root@alix:~/source/kismet-2011-03-R2# make install
 root@alix:~/source/kismet-2011-03-R2# wget -cd -N -P /usr/share/wireshark http://anonsvn.wireshark.org/wireshark/trunk/manuf
 }}}
 
-*Wireless Drivers for Packet Injection*
+===Wireless Drivers for Packet Injection===
 
 Atheros AR5212 (ath5k and madwifi-ng)
 Realtek RTL8187L (rtl8187)
@@ -86,14 +86,15 @@ root@alix:~/source/rtl8187_linux_26.1010.0622.2006# make
 root@alix:~/source/rtl8187_linux_26.1010.0622.2006# make install
 }}}
 
-*miniPCIe GSM Cellular Modem - *_Alix 6f2 Only_
+==miniPCIe GSM Cellular Modem==
+_(Alix 6f2 Only)_
 
 These instructions are for the SierraWireless (HP) MC8775 and may need to be tailored for your GSM card.  If the card is not unlocked this can be done from Windows with the software DC - Unlocker 2 (Client 1.00.0857).  The software wvdial is used to make the connection.
 {{{
 #apt-get install wvdial ppp
 #vim /etc/wvdial.conf
 }}}
------------------wvdial.conf-----------------
+*-----------------wvdial.conf-----------------*
 {{{
 [Dialer Defaults]
 Phone = *99#
@@ -123,7 +124,7 @@ A great service to use with this device for penetration testing is T-Mobile's Pr
 NOTE:  as of this document you cannot activate your miniPCIe card with your SIM on a Linux machine.  It has to be done with Windows.  If you do not have a laptop or desktop with a miniPCIe slot you will need to get an adapter.  Thankfully they make a USB adapter (for laptops) and PCI adapters for desktops.  The software DC-Unlocker is great at unlocking the card.  For the Serria Wireless AirCard Watcher is used to connect to the Internet
 http://www.sierrawireless.com/productsandservices/AirCard/SoftwareSolutions/AirCardWatcher_USBs.aspx 
 
-*Reverse SSH Tunnel*
+==Reverse SSH Tunnel==
 
 Out of band access to the Alix 6f2 using the GSM cellular modem.
 
@@ -133,7 +134,7 @@ SSH Public/Private Key help: http://newport.eecs.uci.edu/~chou/ssh-key.html
 
 NOTE:  for this to work you will need a publicly accessible SSH server that you control.
 
-Simple
+*Simple*
 Start Tunnel from Alix:  
 {{{
 ssh -R 65001:localhost:22 username@remote.host.com
@@ -145,7 +146,7 @@ ssh root@localhost -p 65001
 
 *With public/private keys*
 
-For these instructions the Alix must be on the same network as the Remote Host, the key will be called alix_key, and no password will be assigned to the key.  No password is assigned so that automatic reconnect of the tunnel can be done via a script when the connection goes down.  Also, these steps will not overwrite any current private key that was created (id_rsa).  New keys are generated that we will only use for the reverse tunnel.
+For these instructions the Alix must be on the same network as the Remote Host (just for the key exchange), the key will be called alix_key, and no password will be assigned to the key.  No password is assigned so that automatic reconnect of the tunnel can be done via a script when the connection goes down.  Also, these steps will not overwrite any current private key that was created (id_rsa).  New keys are generated that we will only use for the reverse tunnel.
 
 On Remote Host
 {{{
@@ -228,3 +229,29 @@ ServerAliveInterval 60
 #make install
 }}}
 See /usr/local/share/examples/autossh/autossh.host for an example of an autossh start script.
+
+
+==Metasploit==
+
+For wireless testing the Metasploit framework is great for attacking clients that associate with your rogue access point.  The main project created for this purpose is known as Karmetasploit.  Below is how to get Metasploit installed and setup with Postgresql.
+{{{
+apt-get install ruby libreadline5 libruby1.8 ruby1.8 ruby1.8-dev rubygems1.8
+apt-get install postgresql libpq-dev libpq5 postgresql-8.4 postgresql-client-8.4 postgresql-client-common
+  postgresql-common ssl-cert
+sudo su postgres -c psql
+ALTER USER postgres WITH PASSWORD 'your password';
+\q
+sudo passwd -d postgres
+sudo su postgres -c passwd
+<type the password for postgres account>
+update-alternatives --config ruby
+choose 0 for "auto-mode"
+gem install pg
+svn co https://www.metasploit.com/svn/framework3/trunk/ /opt/msf
+}}}
+
+{{{
+/opt/msf/msfconsole
+db_status postgresql
+db_connect postgres:”postgreSQL_password”@127.0.0.1/metasploit (“metasploit” being the name of the  database)
+}}}
