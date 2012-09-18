@@ -235,23 +235,20 @@ See /usr/local/share/examples/autossh/autossh.host for an example of an autossh 
 
 For wireless testing the Metasploit framework is great for attacking clients that associate with your rogue access point.  The main project created for this purpose is known as Karmetasploit.  Below is how to get Metasploit installed and setup with Postgresql.
 {{{
-apt-get install ruby libreadline5 libruby1.8 ruby1.8 ruby1.8-dev rubygems1.8
-apt-get install postgresql libpq-dev libpq5 postgresql-8.4 postgresql-client-8.4 postgresql-client-common
-  postgresql-common ssl-cert
-sudo su postgres -c psql
-ALTER USER postgres WITH PASSWORD 'your password';
-\q
-sudo passwd -d postgres
-sudo su postgres -c passwd
+#apt-get install ruby libreadline5 libruby1.8 ruby1.8 ruby1.8-dev rubygems1.8
+#apt-get install postgresql libpq-dev libpq5 postgresql-8.4 postgresql-client-8.4 postgresql-client-common postgresql-common ssl-cert
+#su postgres -c psql
+postgres=# ALTER USER postgres WITH PASSWORD 'your password';
+postgres=# \q
+#passwd -d postgres
+#su postgres -c passwd
 <type the password for postgres account>
-update-alternatives --config ruby
-choose 0 for "auto-mode"
-gem install pg
-svn co https://www.metasploit.com/svn/framework3/trunk/ /opt/msf
+#gem install pg
+#svn co https://www.metasploit.com/svn/framework3/trunk/ /opt/msf
 }}}
 
 {{{
-/opt/msf/msfconsole
-db_status postgresql
-db_connect postgres:”postgreSQL_password”@127.0.0.1/metasploit (“metasploit” being the name of the  database)
+#/opt/msf/msfconsole
+msf > db_connect postgres:”postgreSQL_password”@127.0.0.1/metasploit 
 }}}
+(“metasploit” being the name of the  database)
