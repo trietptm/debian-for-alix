@@ -263,3 +263,24 @@ postgres=# \q
 msf > db_connect postgres:”postgreSQL_password”@127.0.0.1/metasploit 
 }}}
 (“metasploit” being the name of the  database)
+
+
+==Social Engineer’s Toolkit==
+SET has a great feature for cloning a website and loading the site with various scripts to compromise a host or harvest credentials.  SET requires the packages pexpect and BeautifulSoup and recommends the installation of Metasploit.
+{{{
+#cd ~/source
+root@alix:~/source# wget http://downloads.sourceforge.net/project/pexpect/pexpect/Release%202.3/pexpect-2.3.tar.gz
+root@alix:~/source# tar zxf pexpect-2.3.tar.gz
+root@alix:~/source# cd pexpect-2.3
+root@alix:~/source/pexpect-2.3# python setup.py install
+}}}
+{{{
+#cd ~/source
+root@alix:~/source# wget http://www.crummy.com/software/BeautifulSoup/download/3.x/BeautifulSoup-3.2.0.tar.gz
+root@alix:~/source# tar zxf BeautifulSoup-3.2.0.tar.gz
+root@alix:~/source# cd BeautifulSoup-3.2.0
+root@alix:~/source/BeautifulSoup-3.2.0# python setup.py install
+}}}
+{{{
+root@alix:~#  svn co http://svn.trustedsec.com/social_engineering_toolkit /opt/set/
+}}}
