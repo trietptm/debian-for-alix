@@ -61,7 +61,15 @@ root@alix:~/source/reaver-1.4/src# ./configure
 root@alix:~/source/reaver-1.4/src# make
 root@alix:~/source/reaver-1.4/src# make install
 }}}
-
+==HWK==
+{{{
+#cd ~/source
+root@alix:~/source# wget http://nullsecurity.net/tools/wireless/hwk_0.3.2.tar.gz
+root@alix:~/source# tar xzf hwk_0.3.2.tar.gz
+root@alix:~/source# cd hwk_0.3.2
+root@alix:~/source/hwk_0.3.2 # make
+root@alix:~/source/hwk_0.3.2 # make install
+}}}
 ===Wireless Drivers for Packet Injection===
 
 Atheros AR5212 (ath5k and madwifi-ng)
