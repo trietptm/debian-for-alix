@@ -51,6 +51,17 @@ root@alix:~/source/kismet-2011-03-R2# make install
 root@alix:~/source/kismet-2011-03-R2# wget -cd -N -P /usr/share/wireshark http://anonsvn.wireshark.org/wireshark/trunk/manuf
 }}}
 
+==Reaver==
+{{{
+#cd ~/source
+root@alix:~/source# wget http://reaver-wps.googlecode.com/files/reaver-1.4.tar.gz
+root@alix:~/source# tar xzf reaver-1.4.tar.gz
+root@alix:~/source# cd reaver-1.4/src
+root@alix:~/source/reaver-1.4/src# ./configure
+root@alix:~/source/reaver-1.4/src# make
+root@alix:~/source/reaver-1.4/src# make install
+}}}
+
 ===Wireless Drivers for Packet Injection===
 
 Atheros AR5212 (ath5k and madwifi-ng)
