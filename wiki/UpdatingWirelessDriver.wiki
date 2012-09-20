@@ -105,7 +105,8 @@ ethtool -i wlan0
 modinfo ath5k  
 }}}
 
-You can now being using the iw tool and investigate your spectrum environment for example:
+modinfo gives the status of the driver currently being used. Specify any driver appropriate.
+You can now begin using the iw tool and investigate your spectrum environment for example:
 
 {{{
 iw dev wlan0 survey dump
