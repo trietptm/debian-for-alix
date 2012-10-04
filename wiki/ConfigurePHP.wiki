@@ -2,7 +2,7 @@
 
 = Introduction =
 
-How to install and configure php5 under nginx http server.
+How to install and configure php5 under nginx https server.
  * install php-cgi engine
  * create php-fcgi script and install it as service
  * create folder that will used to store php-fcgi socket
