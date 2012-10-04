@@ -143,10 +143,20 @@ start() {
 }
 stop() {
       echo -n "Stopping PHP FastCGI: "
-      killall -q -w -u $USER $PHP_CGI
+      start-stop-daemon --quiet --stop --user $USER --exec $PHP_CGI
       RETVAL=$?
       echo "$PHP_CGI_NAME."
 }
+
+status() {
+      PID="$(pidof $PHP_CGI_NAME)"
+      [ "$PID" != "" ] && {
+          echo "$PHP_CGI_NAME is running ($PID)"
+      } || {
+          echo "$PHP_CGI_NAME is not running"
+      }
+}
+
 
 case "$1" in
     start)
@@ -158,6 +168,9 @@ case "$1" in
     restart)
       stop
       start
+  ;;
+    status)
+      status
   ;;
     *)
       echo "Usage: php-fcgi {start|stop|restart}"
