@@ -73,7 +73,6 @@ server {
     ssl_prefer_server_ciphers   on;
 
     auth_basic "Restrited Access";
-
     auth_basic_user_file /var/www/.htpasswd;
 
     location / {
