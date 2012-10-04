@@ -10,10 +10,9 @@ How to install and configure php5 under nginx http server.
  * start php-fcgi engine
  * restart nginx http server
 
-_any aditional php module can be installed, regarding hardware power limitations_
-
-_*static* (htm, html, css, jpg, gif ...) and *php* files stored under */var/www/htdocs*_
-_*cgi* files stored under */var/www/cgi-bin*_
+ *_any aditional php module can be installed, regarding hardware power limitations_
+ *_*static* (htm, html, css, jpg, gif ...) and *php* files stored under */var/www/htdocs*_
+ *_*cgi* files stored under */var/www/cgi-bin*_
 
 = Details =
 
