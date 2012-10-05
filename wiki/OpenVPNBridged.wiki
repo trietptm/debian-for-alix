@@ -1,5 +1,5 @@
 = OpenVPN in bridge mode =
-Here you'll see how to use the pre-configured openvpn server to provide a *client to site* vpn in a *bridge mode*.
+Here you'll see how to use the pre-configured openvpn server to provide a *client to site* vpn in *bridge mode*.
  * *client to site* - when one or more single remote hosts can connect to a LAN
  * *bridge mode* - when the local and remote hosts act similar as they are in the same local network.
 
