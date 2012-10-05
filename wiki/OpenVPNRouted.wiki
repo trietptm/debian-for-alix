@@ -1,5 +1,5 @@
 = OpenVPN in routed mode =
-Here you'll see how to use the pre-configured openvpn server to provide a *client to site* vpn in a *bridge mode*.
+Here you'll see how to use the pre-configured openvpn server to provide a *client to site* vpn in *?outed mode*.
  * *client to site* - when one or more single remote hosts can connect to a LAN
  * *routed mode* - there are two distinct IP networks and the hosts on both side need to know the gateway IP to _talk_ between them.
 
