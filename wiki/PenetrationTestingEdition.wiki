@@ -19,57 +19,8 @@ Once the Alix boots, whether on the Alix or in VirtualBox, run the following com
 }}}
 We remove dnsmasq from start since we will be using it in penetration testing.
 
-==Install Software==
-{{{
-#apt-get install subversion (Note:  build-essential, git, already installed)
-#apt-get install zip unzip
-#apt-get install linux-headers-`uname -r`
-#apt-get install ettercap ettercap-common
-#mkdir ~/source
-#cd ~/source
-}}}
 
-===Aircrack-NG===
-{{{
-root@alix:~/source# svn co http://trac.aircrack-ng.org/svn/trunk/ aircrack-ng
-root@alix:~/source# cd aircrack-ng
-root@alix:~/source/aircrack-ng# make
-root@alix:~/source/aircrack-ng# make install
-root@alix:~/source/aircrack-ng# airodump-ng-oui-update
-}}}
 
-===Kismet===
-{{{
-#apt-get install libpcap0.8-dev libncurses5-dev libnl-dev libpcre3-dev
-#cd ~/source
-root@alix:~/source# wget https://www.kismetwireless.net/code/kismet-2011-03-R2.tar.gz
-root@alix:~/source# tar zxf kismet-2011-03-R2.tar.gz
-root@alix:~/source# cd kismet-2011-03-R2
-root@alix:~/source/kismet-2011-03-R2# ./configure
-root@alix:~/source/kismet-2011-03-R2# make
-root@alix:~/source/kismet-2011-03-R2# make install
-root@alix:~/source/kismet-2011-03-R2# wget -cd -N -P /usr/share/wireshark http://anonsvn.wireshark.org/wireshark/trunk/manuf
-}}}
-
-==Reaver==
-{{{
-#cd ~/source
-root@alix:~/source# wget http://reaver-wps.googlecode.com/files/reaver-1.4.tar.gz
-root@alix:~/source# tar xzf reaver-1.4.tar.gz
-root@alix:~/source# cd reaver-1.4/src
-root@alix:~/source/reaver-1.4/src# ./configure
-root@alix:~/source/reaver-1.4/src# make
-root@alix:~/source/reaver-1.4/src# make install
-}}}
-==HWK==
-{{{
-#cd ~/source
-root@alix:~/source# wget http://nullsecurity.net/tools/wireless/hwk_0.3.2.tar.gz
-root@alix:~/source# tar xzf hwk_0.3.2.tar.gz
-root@alix:~/source# cd hwk_0.3.2
-root@alix:~/source/hwk_0.3.2 # make
-root@alix:~/source/hwk_0.3.2 # make install
-}}}
 ===Wireless Drivers for Packet Injection===
 
 Atheros AR5212 (ath5k and madwifi-ng)
@@ -250,45 +201,4 @@ ServerAliveInterval 60
 See /usr/local/share/examples/autossh/autossh.host for an example of an autossh start script.
 
 
-==Metasploit==
 
-For wireless testing the Metasploit framework is great for attacking clients that associate with your rogue access point.  The main project created for this purpose is known as Karmetasploit.  Below is how to get Metasploit installed and setup with Postgresql.
-{{{
-#apt-get install ruby libreadline5 libruby1.8 ruby1.8 ruby1.8-dev rubygems1.8
-#apt-get install postgresql libpq-dev libpq5 postgresql-8.4 postgresql-client-8.4 postgresql-client-common postgresql-common ssl-cert
-#su postgres -c psql
-postgres=# ALTER USER postgres WITH PASSWORD 'your password';
-postgres=# \q
-#passwd -d postgres
-#su postgres -c passwd
-<type the password for postgres account>
-#gem install pg
-#svn co https://www.metasploit.com/svn/framework3/trunk/ /opt/msf
-}}}
-
-{{{
-#/opt/msf/msfconsole
-msf > db_connect postgres:”postgreSQL_password”@127.0.0.1/metasploit 
-}}}
-(“metasploit” being the name of the  database)
-
-
-==Social Engineer’s Toolkit==
-SET has a great feature for cloning a website and loading the site with various scripts to compromise a host or harvest credentials.  SET requires the packages pexpect and BeautifulSoup and recommends the installation of Metasploit.
-{{{
-#cd ~/source
-root@alix:~/source# wget http://downloads.sourceforge.net/project/pexpect/pexpect/Release%202.3/pexpect-2.3.tar.gz
-root@alix:~/source# tar zxf pexpect-2.3.tar.gz
-root@alix:~/source# cd pexpect-2.3
-root@alix:~/source/pexpect-2.3# python setup.py install
-}}}
-{{{
-#cd ~/source
-root@alix:~/source# wget http://www.crummy.com/software/BeautifulSoup/download/3.x/BeautifulSoup-3.2.0.tar.gz
-root@alix:~/source# tar zxf BeautifulSoup-3.2.0.tar.gz
-root@alix:~/source# cd BeautifulSoup-3.2.0
-root@alix:~/source/BeautifulSoup-3.2.0# python setup.py install
-}}}
-{{{
-root@alix:~#  svn co http://svn.trustedsec.com/social_engineering_toolkit /opt/set/
-}}}
