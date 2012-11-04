@@ -19,7 +19,9 @@ Once the Alix boots, whether on the Alix or in VirtualBox, run the following com
 }}}
 We remove dnsmasq from start since we will be using it in penetration testing.
 
+==Install Software==
 
+http://code.google.com/p/debian-for-alix/wiki/PentestSoftwareInstallation?ts=1352063824&updated=PentestSoftwareInstallation
 
 ===Wireless Drivers for Packet Injection===
 
@@ -199,6 +201,3 @@ ServerAliveInterval 60
 #make install
 }}}
 See /usr/local/share/examples/autossh/autossh.host for an example of an autossh start script.
-
-
-
