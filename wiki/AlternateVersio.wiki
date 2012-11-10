@@ -139,7 +139,7 @@ An optional company name []:
 Using configuration from /etc/ssl/easy-rsa/openssl.cnf
 Check that the request matches the signature
 Signature ok
-The Subject's Distinguished Name is as follows
+The Subject s Distinguished Name is as follows
 countryName           :PRINTABLE:'BR'
 stateOrProvinceName   :PRINTABLE:'SP'
 localityName          :PRINTABLE:'Sao Paulo'
@@ -191,7 +191,7 @@ An optional company name []:
 Using configuration from /etc/ssl/easy-rsa/openssl.cnf
 Check that the request matches the signature
 Signature ok
-The Subject's Distinguished Name is as follows
+The Subject s Distinguished Name is as follows
 countryName           :PRINTABLE:'BR'
 stateOrProvinceName   :PRINTABLE:'SP'
 localityName          :PRINTABLE:'Sao Paulo'
