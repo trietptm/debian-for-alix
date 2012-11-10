@@ -1,0 +1,45 @@
+# slightly different, only some directories are writeable in RAM disks
+
+= Alternate Version =
+
+In this alternate version, the root partition stored on CF-CARD is mounted in readonly, while a couple others that are required to system runs were allocated in RAM.
+
+I think the maintenance of this version is a little simple than previous one.
+
+Also, it is possible a better control of partitions in RAM by setting maximum amount to each one.
+
+= Details =
+
+All of system is under ro mode, except these:
+{{{
+/mnt/        (tmpfs)
+/tmp/        (tmpfs)
+/var/lock/   (aufs, join from /ro/var/lock  and /rw/var/lock )
+/var/log/    (aufs, join from /ro/var/log   and /rw/var/log  )
+/var/run/    (aufs, join from /ro/var/run   and /rw/var/run  )
+/var/spool/  (aufs, join from /ro/var/spool and /rw/var/spool)
+}}}
+
+The size of each partition can be ajusted by setting variables *TMPFS_SIZE*, *RUNFS_SIZE*, *LOCKFS_SIZE*, *LOGFS_SIZE* and *SPOOLFS_SIZE* in */etc/default/tmpfs*
+
+To install some package or change some configuration, use `remountrw` to turn `/` writable and `remountro` to back it to readonly mode.
+
+{{{
+root@alix:~# df -hT
+Filesystem    Type    Size  Used Avail Use% Mounted on
+rootfs      rootfs    1.8G  864M  816M  52% /
+none      devtmpfs    121M  104K  120M   1% /dev
+/dev/sda1     ext2    1.8G  864M  816M  52% /
+tmpfs        tmpfs     20M     0   20M   0% /lib/init/rw
+tmpfs        tmpfs    256K     0  256K   0% /mnt
+tmpfs        tmpfs     20M   24K   20M   1% /tmp
+tmpfslock    tmpfs    5.0M   28K  5.0M   1% /rw/var/lock
+tmpfslog     tmpfs     20M  280K   20M   2% /rw/var/log
+tmpfsrun     tmpfs    5.0M  648K  4.4M  13% /rw/var/run
+tmpfsspool   tmpfs     25M  2.5M   23M  10% /rw/var/spool
+aufslock      aufs    5.0M   28K  5.0M   1% /var/lock
+aufslog       aufs     20M  280K   20M   2% /var/log
+aufsrun       aufs    5.0M  648K  4.4M  13% /var/run
+aufsspoll     aufs     25M  2.5M   23M  10% /var/spool
+tmpfs        tmpfs     30M  4.0K   30M   1% /dev/shm
+}}}
