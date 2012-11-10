@@ -63,10 +63,10 @@ passwd: password updated successfully
 Remove ssh host keys and create new ones
 {{{
 root@alix:/# rm -v /etc/ssh/ssh_host_*
-removed `/etc/ssh/ssh_host_dsa_key'
-removed `/etc/ssh/ssh_host_dsa_key.pub'
-removed `/etc/ssh/ssh_host_rsa_key'
-removed `/etc/ssh/ssh_host_rsa_key.pub'
+removed '/etc/ssh/ssh_host_dsa_key'
+removed '/etc/ssh/ssh_host_dsa_key.pub'
+removed '/etc/ssh/ssh_host_rsa_key'
+removed '/etc/ssh/ssh_host_rsa_key.pub'
 
 root@alix:/# dpkg-reconfigure openssh-server
 Creating SSH2 RSA key; this may take some time ...
@@ -101,7 +101,7 @@ State or Province Name (full name) [SP]:
 Locality Name (eg, city) [Sao Paulo]:
 Organization Name (eg, company) [Debian For Alix]:
 Organizational Unit Name (eg, section) []:Linux IT
-Common Name (eg, your name or your server's hostname) [Debian For Alix CA]:
+Common Name (eg, your name or your server s hostname) [Debian For Alix CA]:
 Name []:
 Email Address [alix@site]:
 
@@ -128,7 +128,7 @@ State or Province Name (full name) [SP]:
 Locality Name (eg, city) [Sao Paulo]:
 Organization Name (eg, company) [Debian For Alix]:
 Organizational Unit Name (eg, section) []:Linux IT
-Common Name (eg, your name or your server's hostname) [sometorevoke.site]:
+Common Name (eg, your name or your server s hostname) [sometorevoke.site]:
 Name []:
 Email Address [alix@site]:
 
@@ -180,7 +180,7 @@ State or Province Name (full name) [SP]:
 Locality Name (eg, city) [Sao Paulo]:
 Organization Name (eg, company) [Debian For Alix]:
 Organizational Unit Name (eg, section) []:Linux IT
-Common Name (eg, your name or your server's hostname) [alix.site]:
+Common Name (eg, your name or your server s hostname) [alix.site]:
 Name []:
 Email Address [alix@site]:
 
