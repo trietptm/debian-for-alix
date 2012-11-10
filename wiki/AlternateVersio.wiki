@@ -43,3 +43,9 @@ aufsrun       aufs    5.0M  648K  4.4M  13% /var/run
 aufsspoll     aufs     25M  2.5M   23M  10% /var/spool
 tmpfs        tmpfs     30M  4.0K   30M   1% /dev/shm
 }}}
+
+=== Download ===
+
+[http://debian-for-alix.googlecode.com/files/debian-for-alix-cf2g-2012-11-08.raw.bz2.00]
+
+[http://debian-for-alix.googlecode.com/files/debian-for-alix-cf2g-2012-11-08.raw.bz2.01]
