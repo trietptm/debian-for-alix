@@ -22,7 +22,7 @@ All of system is under ro mode, except these:
 
 The size of each partition can be ajusted by setting variables *TMPFS_SIZE*, *RUNFS_SIZE*, *LOCKFS_SIZE*, *LOGFS_SIZE* and *SPOOLFS_SIZE* in */etc/default/tmpfs*
 
-To install some package or change some configuration, use `remountrw` to turn `/` writable and `remountro` to back it to readonly mode.
+To install some package or change some configuration, use *remountrw* to turn */* writable and *remountro* to back it to readonly mode.
 
 {{{
 root@alix:~# df -hT
