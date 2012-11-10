@@ -49,3 +49,195 @@ tmpfs        tmpfs     30M  4.0K   30M   1% /dev/shm
 [http://debian-for-alix.googlecode.com/files/debian-for-alix-cf2g-2012-11-08.raw.bz2.00]
 
 [http://debian-for-alix.googlecode.com/files/debian-for-alix-cf2g-2012-11-08.raw.bz2.01]
+
+=== Security ===
+
+Change root password
+{{{
+root@alix:/# passwd
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+}}}
+
+Remove ssh host keys and create new ones
+{{{
+root@alix:/# rm -v /etc/ssh/ssh_host_*
+removed `/etc/ssh/ssh_host_dsa_key'
+removed `/etc/ssh/ssh_host_dsa_key.pub'
+removed `/etc/ssh/ssh_host_rsa_key'
+removed `/etc/ssh/ssh_host_rsa_key.pub'
+
+root@alix:/# dpkg-reconfigure openssh-server
+Creating SSH2 RSA key; this may take some time ...
+Creating SSH2 DSA key; this may take some time ...
+Restarting OpenBSD Secure Shell server: sshd.
+}}}
+
+Build new certificate authority and certificates, they are used by openvpn, nginx, cups and stunnel/transmission to provide SSL/TLS communication.
+{{{
+root@alix:~# cd /etc/ssl/easy-rsa
+
+root@alix:/etc/ssl/easy-rsa# . vars
+NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/ssl/easy-rsa/keys
+
+root@alix:/etc/ssl/easy-rsa# ./clean-all
+
+root@alix:/etc/ssl/easy-rsa# ./build-ca
+Generating a 1024 bit RSA private key
+.......++++++
+...++++++
+writing new private key to 'ca.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For Alix]:
+Organizational Unit Name (eg, section) []:Linux IT
+Common Name (eg, your name or your server's hostname) [Debian For Alix CA]:
+Name []:
+Email Address [alix@site]:
+
+root@alix:/etc/ssl/easy-rsa# ./build-dh
+Generating DH parameters, 1024 bit long safe prime, generator 2
+This is going to take a long time
+..........+...........+..................................................................+....................................+....+....................+..................+...................................................+.................................................................................................................+.+................................+....+.................................++*++*++*
+
+root@alix:/etc/ssl/easy-rsa# ./build-key-server sometorevoke.site
+Generating a 1024 bit RSA private key
+...........++++++
+.......................................................++++++
+writing new private key to 'sometorevoke.site.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For Alix]:
+Organizational Unit Name (eg, section) []:Linux IT
+Common Name (eg, your name or your server's hostname) [sometorevoke.site]:
+Name []:
+Email Address [alix@site]:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+Using configuration from /etc/ssl/easy-rsa/openssl.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+countryName           :PRINTABLE:'BR'
+stateOrProvinceName   :PRINTABLE:'SP'
+localityName          :PRINTABLE:'Sao Paulo'
+organizationName      :PRINTABLE:'Debian For Alix'
+organizationalUnitName:PRINTABLE:'Linux IT'
+commonName            :PRINTABLE:'sometorevoke.site'
+emailAddress          :IA5STRING:'alix@site'
+Certificate is to be certified until Nov  6 02:27:26 2022 GMT (3650 days)
+Sign the certificate? [y/n]:y
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+
+root@alix:/etc/ssl/easy-rsa# ./revoke-full sometorevoke.site
+Using configuration from /etc/ssl/easy-rsa/openssl.cnf
+Revoking Certificate 01.
+Data Base Updated
+Using configuration from /etc/ssl/easy-rsa/openssl.cnf
+sometorevoke.site.crt: /C=BR/ST=SP/L=Sao Paulo/O=Debian For Alix/OU=Linux IT/CN=sometorevoke.site/emailAddress=alix@site
+error 23 at 0 depth lookup:certificate revoked
+root@alix:/etc/ssl/easy-rsa# ./build-key-server alix.site
+Generating a 1024 bit RSA private key
+........................++++++
+................++++++
+writing new private key to 'alix.site.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [BR]:
+State or Province Name (full name) [SP]:
+Locality Name (eg, city) [Sao Paulo]:
+Organization Name (eg, company) [Debian For Alix]:
+Organizational Unit Name (eg, section) []:Linux IT
+Common Name (eg, your name or your server's hostname) [alix.site]:
+Name []:
+Email Address [alix@site]:
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:
+Using configuration from /etc/ssl/easy-rsa/openssl.cnf
+Check that the request matches the signature
+Signature ok
+The Subject's Distinguished Name is as follows
+countryName           :PRINTABLE:'BR'
+stateOrProvinceName   :PRINTABLE:'SP'
+localityName          :PRINTABLE:'Sao Paulo'
+organizationName      :PRINTABLE:'Debian For Alix'
+organizationalUnitName:PRINTABLE:'Linux IT'
+commonName            :PRINTABLE:'alix.site'
+emailAddress          :IA5STRING:'alix@site'
+Certificate is to be certified until Nov  6 02:28:09 2022 GMT (3650 days)
+Sign the certificate? [y/n]:y
+
+
+1 out of 1 certificate requests certified, commit? [y/n]y
+Write out database with 1 new entries
+Data Base Updated
+
+root@alix:/etc/ssl/easy-rsa# chmod 0755 keys
+
+root@alix:/etc/ssl/easy-rsa# /etc/init.d/openvpn restart
+Stopping virtual private network daemon: udp-bridge.
+Starting virtual private network daemon: udp-bridge.
+
+root@alix:/etc/ssl/easy-rsa# /etc/init.d/nginx restart
+Restarting nginx: nginx.
+
+root@alix:/etc/ssl/easy-rsa# /etc/init.d/stunnel4 restart
+Restarting SSL tunnels: [stopped: /etc/stunnel/stunnel.conf] [Started: /etc/stunnel/stunnel.conf] stunnel.
+
+root@alix:/etc/ssl/easy-rsa# /etc/init.d/cups restart
+Restarting Common Unix Printing System: cupsd.
+}}}
+
+Change samba `guest` password
+{{{
+root@alix:/# smbpasswd nobody
+New SMB password:
+Retype new SMB password:
+
+root@alix:/# mv /rw/var/spool/samba/private/passdb.tdb /ro/var/spool/samba/private/
+}}}
+
+Change password for admin panel and storage web access. Optionally, also change usernames.
+{{{
+root@alix:/# perl -le 'print crypt("new-plain-pwd", "*/")'
+*/fGLOb58BZ1Q
+
+root@alix:/# nano /var/www/.htpasswd
+
+root@alix:/# nano /var/www/.htpasswd-storage
+}}}
