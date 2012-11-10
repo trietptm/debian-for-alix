@@ -19,7 +19,7 @@ cd openvpn-2.2.2
 autoreconf -vi
 ./configure --enable-iproute2
 make
-make install # or use checkinstall to generate and install the debian package
+make install # or use checkinstall to generate and install a debian package
 
 history -c ; exit
 rebind off
