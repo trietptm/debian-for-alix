@@ -14,10 +14,10 @@ All of system is under ro mode, except these:
 {{{
 /mnt/        (tmpfs)
 /tmp/        (tmpfs)
-/var/lock/   (aufs, join from /ro/var/lock  and /rw/var/lock )
-/var/log/    (aufs, join from /ro/var/log   and /rw/var/log  )
-/var/run/    (aufs, join from /ro/var/run   and /rw/var/run  )
-/var/spool/  (aufs, join from /ro/var/spool and /rw/var/spool)
+/var/lock/   (aufs, union from /ro/var/lock  and /rw/var/lock )
+/var/log/    (aufs, union from /ro/var/log   and /rw/var/log  )
+/var/run/    (aufs, union from /ro/var/run   and /rw/var/run  )
+/var/spool/  (aufs, union from /ro/var/spool and /rw/var/spool)
 }}}
 
 The size of each partition can be ajusted by setting variables *TMPFS_SIZE*, *RUNFS_SIZE*, *LOCKFS_SIZE*, *LOGFS_SIZE* and *SPOOLFS_SIZE* in */etc/default/tmpfs*
