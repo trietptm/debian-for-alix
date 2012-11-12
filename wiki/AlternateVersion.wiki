@@ -53,7 +53,7 @@ tmpfs        tmpfs     30M  4.0K   30M   1% /dev/shm
 === Tip ===
 Speed up boot almost a half time.
 
-turn root file system writable and start udev-mtab just once time to collect and update configurations about your hardware.
+turn root file system writable and start udev-mtab just once to collect and update informations about hardware.
 {{{
 /etc/init.d/udev-mtab start
 }}}
