@@ -49,7 +49,7 @@ tmpfs        tmpfs     30M  4.0K   30M   1% /dev/shm
 [http://debian-for-alix.googlecode.com/files/debian-for-alix-cf2g-2012-11-08.raw.bz2.01]
 
 === Tips ===
-General maintenance in readonly system.
+* General maintenance in readonly system.
 
 To install some package or change some configuration file, use *remountrw* to turn */* writable and *remountro* to back it to readonly mode.
 
@@ -60,12 +60,13 @@ UUID=438cb640-b8ae-41c7-befc-6c99c476c9ba /  ext2 ro,noatime,errors=continue,acl
 }}}
 _don´t forget to change it back to *ro* mode after maintenance (or tests) were finished.
 
-Speed up boot almost a half time.
+* Speed up boot almost a half time
 
 turn root file system writable and start udev-mtab just once to collect and update informations about hardware.
 {{{
 /etc/init.d/udev-mtab start
 }}}
+_boot time compared on ALIX2D13_
 
 
 === Security ===
