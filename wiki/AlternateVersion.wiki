@@ -22,8 +22,6 @@ All of system is under ro mode, except these:
 
 The size of each partition can be ajusted by setting variables *TMPFS_SIZE*, *RUNFS_SIZE*, *LOCKFS_SIZE*, *LOGFS_SIZE* and *SPOOLFS_SIZE* in */etc/default/tmpfs*
 
-To install some package or change some configuration, use *remountrw* to turn */* writable and *remountro* to back it to readonly mode.
-
 {{{
 root@alix:~# df -hT
 Filesystem    Type    Size  Used Avail Use% Mounted on
@@ -50,13 +48,25 @@ tmpfs        tmpfs     30M  4.0K   30M   1% /dev/shm
 
 [http://debian-for-alix.googlecode.com/files/debian-for-alix-cf2g-2012-11-08.raw.bz2.01]
 
-=== Tip ===
+=== Tips ===
+General maintenance in readonly system.
+
+To install some package or change some configuration file, use *remountrw* to turn */* writable and *remountro* to back it to readonly mode.
+
+If for some reason it needs to boot in readwrite mode, edit */etc/fstab*
+and change mount parameter from *ro,noatime...* to *rw,noatime...*
+{{{
+UUID=438cb640-b8ae-41c7-befc-6c99c476c9ba /  ext2 ro,noatime,errors=continue,acl 0 0
+}}}
+_don´t forget to change it back to *ro* mode after maintenance (or tests) were finished.
+
 Speed up boot almost a half time.
 
 turn root file system writable and start udev-mtab just once to collect and update informations about hardware.
 {{{
 /etc/init.d/udev-mtab start
 }}}
+
 
 === Security ===
 
