@@ -50,6 +50,14 @@ tmpfs        tmpfs     30M  4.0K   30M   1% /dev/shm
 
 [http://debian-for-alix.googlecode.com/files/debian-for-alix-cf2g-2012-11-08.raw.bz2.01]
 
+=== Tip ===
+Speed up boot almost a halt time.
+
+turn root file system writable and start udev-mtab just once time to collect and update configurations about your hardware.
+{{{
+/etc/init.d/udev-mtab start
+}}}
+
 === Security ===
 
 Change root password
