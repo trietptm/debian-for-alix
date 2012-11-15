@@ -58,7 +58,7 @@ and change mount parameter from *ro,noatime...* to *rw,noatime...*
 {{{
 UUID=438cb640-b8ae-41c7-befc-6c99c476c9ba /  ext2 ro,noatime,errors=continue,acl 0 0
 }}}
-_don´t forget to change it back to *ro* mode after maintenance (or tests) were finished.
+_don´t forget to change it back to *ro* mode after maintenance (or test) was finished.
 
 * Speed up boot almost a half time
 
