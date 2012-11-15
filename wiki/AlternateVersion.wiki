@@ -2,7 +2,7 @@
 
 = Alternate Version =
 
-On this alternate version, the root partition stored on CF-CARD is mounted in readonly, while a couple others that are required to system runs are allocated in RAM.
+On this alternate version, the root partition stored on CF-CARD is mounted in readonly, while a couple others where write are required to system runs are allocated in RAM.
 
 I think the maintenance of this version is a little bit simple than previous one.
 
