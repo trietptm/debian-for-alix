@@ -3,21 +3,28 @@
 
 *L2TP/IPSec VPN Server* is largest used for secure communication, it has native/built in clients for MS Win and other OS like Mac OS, iOS, Android and Linux.
 
+_ This setup use PSK, but the softwares also support certificates. _
+
+_ Tested clients: Android 4.0, 4.1, iOS 6.0 and Windows 7 Pro _
+
 After client connects, It'll receive an IP in 172.16.210.201 - 172.16.210.220 range, so it'll able to access any other hosts in your local network as It was there.
 
 http://debian-for-alix.googlecode.com/files/openvpn-bridge.png
 
 packages 
-* xl2tpd
-* racoon
-* some dependencies
+
+ * xl2tpd
+ * racoon
+ * some dependencies
 
 config files
-* /etc/ipsec-tools.conf
-* /etc/xl2tpd/xl2tpd.conf
-* /etc/racoon/racoon.conf
-* /etc/racoon/psk.txt
-* /etc/ppp/l2tp-options
+
+ * /etc/ipsec-tools.conf
+ * /etc/xl2tpd/xl2tpd.conf
+ * /etc/racoon/racoon.conf
+ * /etc/racoon/psk.txt
+ * /etc/ppp/l2tp-options
+ * /etc/sysctl.conf
 
 {{{
 remountrw
@@ -136,6 +143,16 @@ lcp-echo-interval 30
 lcp-echo-failure 4
 #debug
 #dump
+}}}
+
+/etc/sysctl.conf
+{{{
+# add (or uncomment) these lines, untouch others
+net.ipv4.conf.all.accept_redirects = 0
+net.ipv4.conf.default.accept_redirects = 0
+
+net.ipv4.conf.all.send_redirects = 0
+net.ipv4.conf.default.send_redirects = 0
 }}}
 
 Add users into chap-secrets, I've used nano, but you can use your preferred text editor
