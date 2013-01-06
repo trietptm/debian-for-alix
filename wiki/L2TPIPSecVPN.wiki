@@ -7,7 +7,18 @@ After client connects, It'll receive an IP in 172.16.210.201 - 172.16.210.220 ra
 
 http://debian-for-alix.googlecode.com/files/openvpn-bridge.png
 
-Install packages xl2tpd and racoon
+packages 
+* xl2tpd
+* racoon
+* some dependencies
+
+config files
+* /etc/ipsec-tools.conf
+* /etc/xl2tpd/xl2tpd.conf
+* /etc/racoon/racoon.conf
+* /etc/racoon/psk.txt
+* /etc/ppp/l2tp-options
+
 {{{
 remountrw
 rebind on
@@ -40,8 +51,8 @@ spdadd 0.0.0.0/0[1701] 0.0.0.0/0[0] udp -P out ipsec
 /etc/xl2tpd/xl2tpd.conf
 {{{
 [global]
-ipsec saref = no
-force userspace = no
+ipsec saref = yes
+force userspace = yes
 
 [lns default]
 ip range = 172.16.210.201-172.16.210.220
@@ -104,7 +115,8 @@ sainfo anonymous
 }}}
 
 /etc/ppp/l2tp-options
-{{{name l2tpd
+{{{
+name l2tpd
 refuse-pap
 refuse-chap
 require-mschap-v2
