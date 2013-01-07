@@ -82,7 +82,7 @@ listen
 }
 remote anonymous
 {
-        exchange_mode    aggressive,main;
+        exchange_mode    main;
         passive          on;
         proposal_check   obey;
         support_proxy    on;
@@ -130,7 +130,7 @@ require-mschap-v2
 auth
 lock
 crtscts
-ms-dns 10.208.70.254
+ms-dns 172.16.210.254
 mtu 1400
 mru 1400
 nodefaultroute
