@@ -189,7 +189,7 @@ Add the lines below on firewall rules at */ro/etc/firewall/alix.fw*
 
 = Tip =
 
-I´ve experienced a long delay to start racoon service, the same was occurred trying openswan, so seeing syslog messages and researching over the internet I found a not good solution, that is not load Geode AES hardware accelerator driver.
+I´ve experienced a long delay to start racoon service, the same occurred trying openswan, so seeing syslog messages and researching over the internet I found a not good solution, not loading Geode AES hardware accelerator driver.
 
 /etc/modprobe.d/blacklist.conf
 {{{
