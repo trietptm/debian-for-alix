@@ -182,6 +182,8 @@ Add the lines below on firewall rules at */ro/etc/firewall/alix.fw*
 
 /sbin/iptables -A INPUT -p udp --dport 500  -m state --state NEW -j ACCEPT
 /sbin/iptables -A INPUT -p udp --dport 4500 -m state --state NEW -j ACCEPT
+/sbin/iptables -A INPUT -p udp --dport 1701  -m state --state NEW -j ACCEPT
+
 
 /sbin/iptables -A FORWARD -i ppp+ -m state --state NEW -j ACCEPT
 }}}
