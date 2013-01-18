@@ -86,7 +86,7 @@ remote anonymous
         passive          on;
         proposal_check   obey;
         support_proxy    on;
-        nat_traversal    on;
+        nat_traversal    force;
         ike_frag         on;
         dpd_delay        20;
         proposal
