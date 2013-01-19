@@ -139,6 +139,8 @@ noipx
 proxyarp
 idle 1800
 connect-delay 5000
+ipcp-accept-local
+ipcp-accept-remote
 lcp-echo-interval 30
 lcp-echo-failure 4
 #debug
