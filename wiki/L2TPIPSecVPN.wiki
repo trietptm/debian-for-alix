@@ -192,6 +192,16 @@ Add the lines below on firewall rules at */ro/etc/firewall/alix.fw*
 
 I´ve experienced a long delay to start racoon service, the same occurred trying openswan, so seeing syslog messages and researching over the internet I found a not good solution, not loading Geode AES hardware accelerator driver.
 
+On this scenary, L2TP/IPSec server has a public IP, but if it is behind a gateway/firewall NAT, you´ll need redirect ports 500/UDP and 4500/UDP, also needs to enabled a resource below on Windows clients
+
+Windows-client-L2TP-IPsec-server-behind-NAT.reg
+{{{
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent]
+"AssumeUDPEncapsulationContextOnSendRule"=dword:00000002
+}}}
+
 /etc/modprobe.d/blacklist.conf
 {{{
 ...
