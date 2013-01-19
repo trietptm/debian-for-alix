@@ -35,6 +35,9 @@ cd /ro/etc/ssl/easy-rsa/
 ./build-key-server alix.site
 ./build-dh
 chmod 0755 keys
+cd keys/
+ln -s ca.crt $(openssl x509 -hash -in ca.crt -noout).0
+ln -s crl.pem $(openssl x509 -hash -in ca.crt -noout).r0
 
 remountro
 
