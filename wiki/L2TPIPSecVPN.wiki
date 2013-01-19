@@ -190,7 +190,7 @@ Add the lines below on firewall rules at */ro/etc/firewall/alix.fw*
 /sbin/iptables -A FORWARD -i ppp+ -m state --state NEW -j ACCEPT
 }}}
 
-= Tip =
+= Tips =
 
 I´ve experienced a long delay to start racoon service, the same occurred trying openswan, so seeing syslog messages and researching over the internet I found a not good solution, not loading Geode AES hardware accelerator driver.
 
