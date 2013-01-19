@@ -58,8 +58,8 @@ spdadd 0.0.0.0/0[1701] 0.0.0.0/0[0] udp -P out ipsec
 /etc/xl2tpd/xl2tpd.conf
 {{{
 [global]
-ipsec saref = yes
 force userspace = yes
+ipsec saref = yes
 
 [lns default]
 ip range = 172.16.210.201-172.16.210.220
