@@ -1,7 +1,7 @@
 # Client to Site VPN
 
 
-*L2TP/IPSec VPN Server* is largest used for secure communication, it has native/built in clients for MS Win and other environment like Mac OS, iOS, Android and Linux.
+*L2TP/IPSec VPN Server* is largest used for secure communication, it has native/built in clients for MS Win and other environments like Mac OS, iOS, Android and Linux.
 
 _ This setup use PSK, but the softwares also support certificates. _
 
