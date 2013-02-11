@@ -1,4 +1,4 @@
-#labels VPN,iOS,iPhone,iPad
+#labels VPNwithiPhoneiPadclients
 # Client to Site VPN using iOS
 
 *IPSec VPN Server* is largest used for secure communication. This wiki explains how to connect an iOS client (e.g., iPhone, iPad) to an Alix VPN server. The proposed solution does not use L2TP tunnel; therefore, it is suitable also for other clients that have native IPSec capabilities.
