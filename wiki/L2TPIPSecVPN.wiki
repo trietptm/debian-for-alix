@@ -78,6 +78,8 @@ path script "/etc/racoon/scripts";
 log notify;
 listen
 {
+        address 172.16.210.254 [500];
+        address 172.16.210.254 [4500];
         adminsock disabled;
 }
 remote anonymous
@@ -86,7 +88,7 @@ remote anonymous
         passive          on;
         proposal_check   obey;
         support_proxy    on;
-        nat_traversal    force;
+        nat_traversal    on;
         ike_frag         on;
         dpd_delay        20;
         proposal
@@ -186,6 +188,7 @@ Add the lines below on firewall rules at */ro/etc/firewall/alix.fw*
 
 
 /sbin/iptables -A FORWARD -i ppp+ -m state --state NEW -j ACCEPT
+/sbin/iptables -A PREROUTING -i eth0 -p udp -m udp -m multiport --dports 500,4500 -j DNAT --to-destination 17.16.210.254 -t nat
 }}}
 
 = Tips =
