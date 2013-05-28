@@ -35,7 +35,7 @@ rebind off
 remountro
 }}}
 
-/etc/racoon.conf
+/etc/racoon/racoon.conf
 {{{
 path pre_shared_key "/etc/racoon/psk.txt";
 
