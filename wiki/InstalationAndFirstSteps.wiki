@@ -1,6 +1,7 @@
 # Instalation and first steps
 
 = Introduction =
+== debian-for-alix-v1.img.bz2 ==
 
 All you need to get your system runnning, in a couple commands.
 
