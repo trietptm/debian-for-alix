@@ -7,15 +7,15 @@ All you need to get your system runnning, in a couple commands.
 
 = writing image on CF =
 
- * *download the image file* from http://code.google.com/p/debian-for-alix/downloads/list
- * *verify the checksum of debian-alix-cf2g.img.bz2* _this step is not required, but recommended to avoid broken files._  
- * *write image on a 2GB (or bigger) compact flash*
+ * *download the image file* 
+ * *verify the checksum of debian-alix-v1.img.bz2* _this step is not required, but recommended to avoid broken files._  
+ * *write image on a 2GB (or large) compact flash*
 
 example
 {{{
 sha1sum debian-alix-cf2g.img.bz2
 
-bzcat debian-alix-cf2g.img.bz2 | dd of=/dev/sdb bs=16k
+bzcat debian-alix-v1.img.bz2 | dd of=/dev/sdb bs=16k
 }}}
 _The device path perhaps can be other like /dev/sdc, /dev/sdd ... according your environment_
 
