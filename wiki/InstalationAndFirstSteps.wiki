@@ -13,7 +13,7 @@ All you need to get your system runnning, in a couple commands.
 
 example
 {{{
-sha1sum debian-alix-cf2g.img.bz2
+sha1sum debian-alix-v1.img.bz2
 
 bzcat debian-alix-v1.img.bz2 | dd of=/dev/sdb bs=16k
 }}}
