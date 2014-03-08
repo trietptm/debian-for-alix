@@ -1,6 +1,7 @@
 # slightly different, only some directories are writeable in RAM disks
 
 = Alternate Version =
+== debian-for-alix-v2.img.bz2 ==
 
 On this alternate version, the root partition stored on CF-CARD is mounted in readonly, while a couple others that write is required to system runs are allocated in RAM.
 
