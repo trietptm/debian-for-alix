@@ -3,7 +3,7 @@
 = VirtualBox Installation =
 
 
-We will download and merge the Debian for Alix image and convert it to a VirtualBox image and extend the disk size to accommodate the installation of larger software packages.  The disk size will be doubled from 2GB to 4GB.  We will then have to modify Grub so the image will boot in VirtualBox.  We will need to first boot from a CD and make the modifications with VBoxManage (located in the VirtualBox install directory).
+We will download and merge the Debian for Alix image and convert it to a VirtualBox image and extend the disk size to accommodate the installation of larger software packages.  The disk size will be doubled from 2GB to 4GB. We will need to first make the modifications with VBoxManage (located in the VirtualBox install directory).
 
 {{{
 C:\Users\edge>"..\..\Program Files\7-Zip\7z.exe" e Downloads\debian-for-alix-v3.img.bz2 -oDownloads
@@ -82,4 +82,3 @@ old_desc_blocks = 1, new_desc_blocks = 1
 Performing an on-line resize of /dev/sda1 to 1048165 (4k) blocks.
 The filesystem on /dev/sda1 is now 1048165 blocks long.
 }}}
-
